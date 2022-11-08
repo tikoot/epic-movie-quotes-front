@@ -9,14 +9,17 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      name: "LandingPage",
       component: LandingPage,
       children: [
         {
           path: "/register",
+          name: "RegisterPage",
           component: RegisterPage,
         },
         {
           path: "/login",
+          name: "LoginPage",
           component: LoginPage,
         },
       ],

@@ -6,8 +6,9 @@
 </template>
 
 <script>
-import TheNavbar from "@/components/TheNavbar.vue";
+import TheNavbar from "@/components/layouts/TheNavbar.vue";
 export default {
+  name: "LandingPage",
   components: {
     TheNavbar,
   },
