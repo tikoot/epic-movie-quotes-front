@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <h1 class="text-white text-[32px]">Create an account</h1>
       <p class="text-[#6C757D]">Start your journey!</p>
-      <VueForm class="pt-[24px]">
+      <VueForm class="pt-[24px]" @submit="store.registerUser">
         <div class="flex flex-col pb-[16px]">
           <label for="username" class="pb-2 mb-[1px] text-white"
             >Name<span class="text-[#DC3545]"> *</span></label
@@ -12,6 +12,7 @@
             name="username"
             placeholder="At least 3 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+            v-model.trim="store.user.username"
           />
         </div>
         <div class="flex flex-col pb-[16px]">
@@ -23,6 +24,7 @@
             type="email"
             placeholder="Enter your email"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+            v-model.trim="store.user.email"
           />
         </div>
         <div class="flex flex-col pb-[16px]">
@@ -34,6 +36,7 @@
             type="password"
             placeholder="At least 8 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+            v-model.trim="store.user.password"
           />
         </div>
         <div class="flex flex-col pb-[16px]">
@@ -45,6 +48,7 @@
             type="password"
             placeholder="At least 8 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+            v-model.trim="store.user.password_confirmation"
           />
         </div>
         <button
@@ -73,14 +77,9 @@
   </base-dialog>
 </template>
 
-<script>
+<script setup>
 import { Form as VueForm, Field } from "vee-validate";
 
-export default {
-  name: "RegisterPage",
-  components: {
-    VueForm,
-    Field,
-  },
-};
+import { useRegisterStore } from "../stores/register";
+const store = useRegisterStore();
 </script>
