@@ -10,9 +10,14 @@
           >
           <Field
             name="username"
+            rules="required|min:3|max:15|symbols"
             placeholder="At least 3 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
             v-model.trim="store.user.username"
+          />
+          <ErrorMessage
+            name="username"
+            class="text-[#E31221] text-base pt-[5px] pl-5"
           />
         </div>
         <div class="flex flex-col pb-[16px]">
@@ -21,10 +26,15 @@
           >
           <Field
             name="email"
+            rules="email|required"
             type="email"
             placeholder="Enter your email"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
             v-model.trim="store.user.email"
+          />
+          <ErrorMessage
+            name="email"
+            class="text-[#E31221] text-base pt-[5px] pl-5"
           />
         </div>
         <div class="flex flex-col pb-[16px]">
@@ -34,9 +44,14 @@
           <Field
             name="password"
             type="password"
+            rules="required|min:3|max:15|symbols"
             placeholder="At least 8 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
             v-model.trim="store.user.password"
+          />
+          <ErrorMessage
+            name="password"
+            class="text-[#E31221] text-base pt-[5px] pl-5"
           />
         </div>
         <div class="flex flex-col pb-[16px]">
@@ -46,9 +61,14 @@
           <Field
             name="password_confirmation"
             type="password"
+            rules="required|confirmed:password"
             placeholder="At least 8 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
             v-model.trim="store.user.password_confirmation"
+          />
+          <ErrorMessage
+            name="password_confirmation"
+            class="text-[#E31221] text-base pt-[5px] pl-5"
           />
         </div>
         <button
@@ -78,7 +98,7 @@
 </template>
 
 <script setup>
-import { Form as VueForm, Field } from "vee-validate";
+import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 
 import { useRegisterStore } from "../stores/register";
 const store = useRegisterStore();
