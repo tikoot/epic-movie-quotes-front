@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 export const useRegisterStore = defineStore("register", {
   state: () => {
     return {
+      showPassword: false,
       user: {
         username: "",
         email: "",
@@ -13,8 +14,9 @@ export const useRegisterStore = defineStore("register", {
   },
   getters: {},
   actions: {
-    registerUser() {
-      console.log(this.user);
+    handleRegister() {},
+    toggleShow() {
+      this.showPassword = !this.showPassword;
     },
   },
 });

@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center">
       <h1 class="text-white text-[32px]">Create an account</h1>
       <p class="text-[#6C757D]">Start your journey!</p>
-      <VueForm class="pt-[24px]" @submit="store.registerUser">
+      <VueForm class="pt-[24px]" @submit="store.handleRegister">
         <div class="flex flex-col pb-[16px]">
           <label for="username" class="pb-2 mb-[1px] text-white"
             >Name<span class="text-[#DC3545]"> *</span></label
@@ -41,14 +41,36 @@
           <label for="password" class="pb-2 mb-[1px] text-white"
             >Password<span class="text-[#DC3545]"> *</span></label
           >
-          <Field
-            name="password"
-            type="password"
-            rules="required|min:3|max:15|symbols"
-            placeholder="At least 8 & max.15 lower case characters"
-            class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-            v-model.trim="store.user.password"
-          />
+          <div class="relative">
+            <Field
+              v-if="!store.showPassword"
+              name="password"
+              type="password"
+              rules="required|min:3|max:15|symbols"
+              placeholder="At least 8 & max.15 lower case characters"
+              class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+              v-model.trim="store.user.password"
+            />
+
+            <Field
+              v-else
+              name="password"
+              type="text"
+              rules="required|min:3|max:15|symbols"
+              placeholder="At least 8 & max.15 lower case characters"
+              class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+              v-model.trim="store.user.password"
+            />
+            <button class="absolute top-3 right-3" @click="store.toggleShow">
+              <img
+                v-if="!store.showPassword"
+                src="@/assets/images/Vector(2).png"
+                alt=""
+              />
+              <img v-else src="@/assets/images/Vector(1).png" alt="" />
+            </button>
+          </div>
+
           <ErrorMessage
             name="password"
             class="text-[#E31221] text-base pt-[5px] pl-5"
@@ -58,14 +80,34 @@
           <label for="password_confirmation" class="pb-2 mb-[1px] text-white"
             >Confirm password<span class="text-[#DC3545]"> *</span></label
           >
-          <Field
-            name="password_confirmation"
-            type="password"
-            rules="required|confirmed:password"
-            placeholder="At least 8 & max.15 lower case characters"
-            class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-            v-model.trim="store.user.password_confirmation"
-          />
+          <div class="relative">
+            <Field
+              v-if="!store.showPassword"
+              name="password_confirmation"
+              type="password"
+              rules="required|confirmed:@password"
+              placeholder="At least 8 & max.15 lower case characters"
+              class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+              v-model.trim="store.user.password_confirmation"
+            />
+            <Field
+              v-else
+              name="password_confirmation"
+              type="text"
+              rules="required|confirmed:@password"
+              placeholder="At least 8 & max.15 lower case characters"
+              class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
+              v-model.trim="store.user.password_confirmation"
+            />
+            <button class="absolute top-3 right-3" @click="store.toggleShow">
+              <img
+                v-if="!store.showPassword"
+                src="@/assets/images/Vector(2).png"
+                alt=""
+              />
+              <img v-else src="@/assets/images/Vector(1).png" alt="" />
+            </button>
+          </div>
           <ErrorMessage
             name="password_confirmation"
             class="text-[#E31221] text-base pt-[5px] pl-5"
