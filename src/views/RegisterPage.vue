@@ -13,7 +13,7 @@
             rules="required|min:3|max:15|symbols"
             placeholder="At least 3 & max.15 lower case characters"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-            v-model.trim="store.user.username"
+            v-model.trim="store.username"
           />
           <ErrorMessage
             name="username"
@@ -30,7 +30,7 @@
             type="email"
             placeholder="Enter your email"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-            v-model.trim="store.user.email"
+            v-model.trim="store.email"
           />
           <ErrorMessage
             name="email"
@@ -46,20 +46,20 @@
               v-if="!store.showPassword"
               name="password"
               type="password"
-              rules="required|min:3|max:15|symbols"
+              rules="required|min:8|max:15|symbols"
               placeholder="At least 8 & max.15 lower case characters"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-              v-model.trim="store.user.password"
+              v-model.trim="store.password"
             />
 
             <Field
               v-else
               name="password"
               type="text"
-              rules="required|min:3|max:15|symbols"
+              rules="required|min:8|max:15|symbols"
               placeholder="At least 8 & max.15 lower case characters"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-              v-model.trim="store.user.password"
+              v-model.trim="store.password"
             />
             <button class="absolute top-3 right-3" @click="store.toggleShow">
               <img
@@ -88,7 +88,7 @@
               rules="required|confirmed:@password"
               placeholder="At least 8 & max.15 lower case characters"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-              v-model.trim="store.user.password_confirmation"
+              v-model.trim="store.password_confirmation"
             />
             <Field
               v-else
@@ -97,16 +97,16 @@
               rules="required|confirmed:@password"
               placeholder="At least 8 & max.15 lower case characters"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
-              v-model.trim="store.user.password_confirmation"
+              v-model.trim="store.password_confirmation"
             />
-            <button class="absolute top-3 right-3" @click="store.toggleShow">
+            <div class="absolute top-3 right-3" @click="store.toggleShow">
               <img
                 v-if="!store.showPassword"
                 src="@/assets/images/Vector(2).png"
                 alt=""
               />
               <img v-else src="@/assets/images/Vector(1).png" alt="" />
-            </button>
+            </div>
           </div>
           <ErrorMessage
             name="password_confirmation"
@@ -114,6 +114,7 @@
           />
         </div>
         <button
+          type="submit"
           class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px]"
         >
           Get Started
@@ -128,10 +129,7 @@
         <div class="text-[#6C757D] text-center mr-[4px]">
           already have an account?
         </div>
-        <router-link
-          :to="{ name: 'LoginPage' }"
-          class="text-[#0D6EFD] underline"
-        >
+        <router-link :to="{ name: 'login' }" class="text-[#0D6EFD] underline">
           log in
         </router-link>
       </div>
