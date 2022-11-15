@@ -29,7 +29,7 @@ export const useRegisterStore = defineStore("register", {
           this.router.replace({ name: "sendEmail" });
         })
         .catch((error) => {
-          alert(error.response.data.message);
+          console.log(error);
         });
     },
     toggleShow() {

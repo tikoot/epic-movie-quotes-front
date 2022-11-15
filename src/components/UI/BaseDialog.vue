@@ -1,6 +1,6 @@
 <template>
   <div
-    @click="$router.back()"
+    @click="this.$router.replace('/')"
     class="fixed top-0 left-0 h-screen w-full z-10 bg-[#0000008a] backdrop-blur-[3px]"
   ></div>
   <dialog

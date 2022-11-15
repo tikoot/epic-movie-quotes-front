@@ -13,7 +13,7 @@
         activate your account.
       </p>
       <button
-        @click="$router.back()"
+        @click="this.$router.replace('/')"
         class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px]"
       >
         Go to my email
