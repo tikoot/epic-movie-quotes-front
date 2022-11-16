@@ -4,6 +4,17 @@
       <h1 class="text-white text-[32px]">Create an account</h1>
       <p class="text-[#6C757D]">Start your journey!</p>
       <VueForm class="pt-[24px]" @submit="store.handleRegister">
+        <div v-if="store.errors !== ''">
+          <div v-for="(value, key) in store.errors" :key="key">
+            <p
+              v-for="error in value"
+              :key="error"
+              class="text-[#E31221] text-base pt-[5px]"
+            >
+              {{ error }}
+            </p>
+          </div>
+        </div>
         <div class="flex flex-col pb-[16px]">
           <label for="username" class="pb-2 mb-[1px] text-white"
             >Name<span class="text-[#DC3545]"> *</span></label
