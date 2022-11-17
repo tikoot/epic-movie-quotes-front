@@ -69,7 +69,12 @@
               >Remember me
             </label>
           </div>
-          <a href="" class="text-[#0D6EFD] underline">Forgot password </a>
+          <router-link
+            :to="{ name: 'forgotPassword' }"
+            class="text-[#0D6EFD] underline"
+          >
+            Forgot password
+          </router-link>
         </div>
         <button
           type="submit"
@@ -100,6 +105,6 @@
 
 <script setup>
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
-import { useLoginStore } from "../stores/login";
+import { useLoginStore } from "../../stores/login";
 const store = useLoginStore();
 </script>

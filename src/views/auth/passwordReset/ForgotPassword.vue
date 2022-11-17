@@ -59,6 +59,6 @@
 
 <script setup>
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
-import { usePasswordStore } from "../stores/password";
+import { usePasswordStore } from "../../../stores/password";
 const store = usePasswordStore();
 </script>

@@ -151,6 +151,6 @@
 <script setup>
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 
-import { useRegisterStore } from "../stores/register";
+import { useRegisterStore } from "../../stores/register";
 const store = useRegisterStore();
 </script>
