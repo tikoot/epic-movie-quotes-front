@@ -8,6 +8,17 @@
         instructions to reset your password
       </p>
       <VueForm class="pt-[24px]" @submit="store.forgotPassword">
+        <div v-if="store.errors !== ''">
+          <div v-for="(value, key) in store.errors" :key="key">
+            <p
+              v-for="error in value"
+              :key="error"
+              class="text-[#E31221] text-base pt-[5px]"
+            >
+              {{ error }}
+            </p>
+          </div>
+        </div>
         <div class="flex flex-col pb-[16px]">
           <label for="email" class="pb-2 mb-[1px] text-white">Email</label>
           <Field

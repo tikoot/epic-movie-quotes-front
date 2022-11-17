@@ -5,6 +5,7 @@ export const usePasswordStore = defineStore("password", {
   state: () => {
     return {
       email: "",
+      errors: null,
     };
   },
   getters: {},
@@ -17,7 +18,8 @@ export const usePasswordStore = defineStore("password", {
           this.router.replace({ name: "SendPasswordEmail" });
         })
         .catch((error) => {
-          console.log(error);
+          this.errors = error.response.data.errors;
+          console.log(error.response.data.errors);
         });
     },
   },
