@@ -46,11 +46,9 @@ export const usePasswordStore = defineStore("password", {
           this.password = null;
           this.password_confirmation = null;
           this.errors = null;
-          this.router.replace({ name: "login" });
+          this.router.replace({ name: "successMessage" });
         })
         .catch((error) => {
-          // rules="required|min:8|max:15|symbols"
-          // rules="required|confirmed:@password"
           this.passwordErrors = error.response.data.errors;
           console.log(error.response.data.errors);
         });

@@ -28,6 +28,7 @@
               name="password"
               type="password"
               placeholder="At least 8 & max.15 lower case characters"
+              rules="required|min:8|max:15|symbols"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
               v-model.trim="store.password"
             />
@@ -37,6 +38,7 @@
               name="password"
               type="text"
               placeholder="At least 8 & max.15 lower case characters"
+              rules="required|min:8|max:15|symbols"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
               v-model.trim="store.password"
             />
@@ -65,6 +67,7 @@
               name="password_confirmation"
               type="password"
               placeholder="Confirm password"
+              rules="required|confirmed:@password"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
               v-model.trim="store.password_confirmation"
             />
@@ -73,6 +76,7 @@
               name="password_confirmation"
               type="text"
               placeholder="Confirm password"
+              rules="required|confirmed:@password"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
               v-model.trim="store.password_confirmation"
             />
