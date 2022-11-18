@@ -83,9 +83,14 @@
           Sign in
         </button>
         <button
-          class="w-full py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
+          class="w-full flex justify-center items-center py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
         >
-          Sign in with Google
+          <img
+            src="@/assets/images/icon.png"
+            alt="google icon"
+            class="pr-[8px]"
+          />
+          Sign up with Google
         </button>
       </VueForm>
       <div class="flex justify-center items-center mt-6">
