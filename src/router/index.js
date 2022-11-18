@@ -7,6 +7,7 @@ import SendEmail from "@/views/auth/email/SendEmail.vue";
 import VerifyEmail from "@/views/auth/email/VerifyEmail.vue";
 import ForgotPassword from "@/views/auth/passwordReset/ForgotPassword.vue";
 import SendPasswordEmail from "@/views/auth/passwordReset/SendPasswordEmail.vue";
+import ResetPassword from "@/views/auth/passwordReset/ResetPassword.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +46,11 @@ const router = createRouter({
           path: "/send-reset-email",
           name: "SendPasswordEmail",
           component: SendPasswordEmail,
+        },
+        {
+          path: "/reset-password",
+          name: "resetPassword",
+          component: ResetPassword,
         },
       ],
     },
