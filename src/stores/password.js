@@ -6,6 +6,11 @@ export const usePasswordStore = defineStore("password", {
     return {
       email: "",
       errors: null,
+      passwordErrors: null,
+      showPassword: false,
+      password: null,
+      password_confirmation: null,
+      token: null,
     };
   },
   getters: {},
@@ -19,6 +24,34 @@ export const usePasswordStore = defineStore("password", {
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
+          console.log(error.response.data.errors);
+        });
+    },
+    toggleShow() {
+      this.showPassword = !this.showPassword;
+    },
+    resetPassword() {
+      this.token = this.router.currentRoute.value.query.token;
+      this.email = this.router.currentRoute.value.query.email;
+      axios
+        .post("reset-password", {
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+          token: this.token,
+        })
+        .then(() => {
+          this.token = null;
+          this.email = "";
+          this.password = null;
+          this.password_confirmation = null;
+          this.errors = null;
+          this.router.replace({ name: "login" });
+        })
+        .catch((error) => {
+          // rules="required|min:8|max:15|symbols"
+          // rules="required|confirmed:@password"
+          this.passwordErrors = error.response.data.errors;
           console.log(error.response.data.errors);
         });
     },
