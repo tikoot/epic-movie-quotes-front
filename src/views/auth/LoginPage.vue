@@ -5,7 +5,7 @@
       <p class="text-[#6C757D] pt-[8px]">
         Welcome back! Please enter your details.
       </p>
-      <VueForm class="pt-[24px]">
+      <VueForm class="pt-[24px]" @submit="onSumbit">
         <div class="flex flex-col pb-[16px]">
           <label for="email" class="pb-2 mb-[1px] text-white">Email</label>
           <Field
@@ -13,6 +13,7 @@
             type="email"
             rules="required|min:3"
             placeholder="Enter your email"
+            v-model.trim="store.email"
             class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
           />
           <ErrorMessage
@@ -24,6 +25,7 @@
           <label for="password" class="pb-2 mb-[1px] text-white"
             >Password</label
           >
+
           <div class="relative">
             <Field
               v-if="!store.showPassword"
@@ -31,6 +33,7 @@
               type="password"
               rules="required"
               placeholder="At least 8 & max.15 lower case characters"
+              v-model.trim="store.password"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
             />
 
@@ -40,6 +43,7 @@
               type="text"
               rules="required"
               placeholder="At least 8 & max.15 lower case characters"
+              v-model.trim="store.password"
               class="bg-[#CED4DA] rounded-[4px] py-[7px] px-[13px] border-[#CED4DA] w-[360px] text-[#6C757D]"
             />
             <button class="absolute top-3 right-3" @click="store.toggleShow">
@@ -82,17 +86,17 @@
         >
           Sign in
         </button>
-        <button
-          class="w-full flex justify-center items-center py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
-        >
-          <img
-            src="@/assets/images/icon.png"
-            alt="google icon"
-            class="pr-[8px]"
-          />
-          Sign up with Google
-        </button>
       </VueForm>
+      <button
+        class="w-full flex justify-center items-center py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
+      >
+        <img
+          src="@/assets/images/icon.png"
+          alt="google icon"
+          class="pr-[8px]"
+        />
+        Sign up with Google
+      </button>
       <div class="flex justify-center items-center mt-6">
         <div class="text-[#6C757D] text-center mr-[4px]">
           Don’t have an account?
@@ -111,5 +115,25 @@
 <script setup>
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 import { useLoginStore } from "../../stores/login";
+import axiosInstance from "@/config/axios/axios";
+import { useAuthStore } from "@/stores/auth";
+import { useRouter } from "vue-router";
+
 const store = useLoginStore();
+const router = useRouter();
+const authStore = useAuthStore();
+
+const onSumbit = async () => {
+  try {
+    const response = await axiosInstance.post(`/login`, {
+      email: store.email,
+      password: store.password,
+    });
+    authStore.authenticated = true;
+    router.push({ name: "newsFeed" });
+    console.log(response);
+  } catch (err) {
+    console.log(err);
+  }
+};
 </script>

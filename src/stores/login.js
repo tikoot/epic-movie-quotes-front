@@ -4,6 +4,8 @@ export const useLoginStore = defineStore("login", {
   state: () => {
     return {
       showPassword: false,
+      email: "",
+      password: "",
     };
   },
   getters: {},
