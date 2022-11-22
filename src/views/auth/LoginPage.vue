@@ -88,6 +88,7 @@
         </button>
       </VueForm>
       <button
+        @click="googleStore.authWithGoogle"
         class="w-full flex justify-center items-center py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
       >
         <img
@@ -115,10 +116,12 @@
 <script setup>
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 import { useLoginStore } from "../../stores/login";
+import { useGoogleStore } from "../../stores/authGoogle";
 import axiosInstance from "@/config/axios/axios";
 import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "vue-router";
 
+const googleStore = useGoogleStore();
 const store = useLoginStore();
 const router = useRouter();
 const authStore = useAuthStore();

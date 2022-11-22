@@ -130,17 +130,18 @@
         >
           Get Started
         </button>
-        <button
-          class="w-full flex justify-center items-center py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
-        >
-          <img
-            src="@/assets/images/icon.png"
-            alt="google icon"
-            class="pr-[8px]"
-          />
-          Sign up with Google
-        </button>
       </VueForm>
+      <button
+        @click="googleStore.authWithGoogle"
+        class="w-full flex justify-center items-center py-[7px] px-[13px] text-center text-white bg-transparent border-white rounded-[4px] border-[1px] mt-[16px]"
+      >
+        <img
+          src="@/assets/images/icon.png"
+          alt="google icon"
+          class="pr-[8px]"
+        />
+        Sign up with Google
+      </button>
       <div class="flex justify-center items-center mt-6">
         <div class="text-[#6C757D] text-center mr-[4px]">
           already have an account?
@@ -157,5 +158,7 @@
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 
 import { useRegisterStore } from "../../stores/register";
+import { useGoogleStore } from "../../stores/authGoogle";
 const store = useRegisterStore();
+const googleStore = useGoogleStore();
 </script>
