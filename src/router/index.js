@@ -4,6 +4,7 @@ import LandingPage from "@/views/LandingPage.vue";
 import NewsFeed from "@/views/NewsFeed.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
+import GoogleCallback from "@/views/auth/GoogleCallback.vue";
 import SendEmail from "@/views/auth/email/SendEmail.vue";
 import VerifyEmail from "@/views/auth/email/VerifyEmail.vue";
 import ForgotPassword from "@/views/auth/passwordReset/ForgotPassword.vue";
@@ -65,12 +66,17 @@ const router = createRouter({
           component: SuccessMessage,
         },
         {
-          path: "/news-feed",
-          name: "newsFeed",
-          component: NewsFeed,
-          beforeEnter: isAuthenticated,
+          path: "auth/google/callback",
+          name: "googleCallback",
+          component: GoogleCallback,
         },
       ],
+    },
+    {
+      path: "/news-feed",
+      name: "newsFeed",
+      component: NewsFeed,
+      beforeEnter: isAuthenticated,
     },
   ],
 });
