@@ -9,6 +9,8 @@ export const useRegisterStore = defineStore("register", {
       email: "",
       password: "",
       password_confirmation: "",
+      errors: null,
+      url: null,
     };
   },
   getters: {},
@@ -29,7 +31,8 @@ export const useRegisterStore = defineStore("register", {
           this.router.replace({ name: "sendEmail" });
         })
         .catch((error) => {
-          console.log(error);
+          this.errors = error.response.data.errors;
+          console.log(error.response.data.errors);
         });
     },
     toggleShow() {
