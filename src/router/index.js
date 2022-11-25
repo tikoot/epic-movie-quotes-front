@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import LandingPage from "@/views/LandingPage.vue";
-import NewsFeed from "@/views/NewsFeed.vue";
+import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
+import MovieList from "@/views/newsFeedPages/MovieList.vue";
+import UserProfile from "@/views/newsFeedPages/UserProfile.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
 import GoogleCallback from "@/views/auth/GoogleCallback.vue";
@@ -76,6 +78,19 @@ const router = createRouter({
       path: "/news-feed",
       name: "newsFeed",
       component: NewsFeed,
+      beforeEnter: isAuthenticated,
+    },
+
+    {
+      path: "/movie-list",
+      name: "movieList",
+      component: MovieList,
+      beforeEnter: isAuthenticated,
+    },
+    {
+      path: "/user-profile",
+      name: "userProfile",
+      component: UserProfile,
       beforeEnter: isAuthenticated,
     },
   ],
