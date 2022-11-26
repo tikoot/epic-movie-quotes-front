@@ -19,7 +19,7 @@
 
           <div class="pl-[24px]">
             <h1 class="text-2xl text-[#FFFFFF]">{{ username }}</h1>
-            <router-link :to="{ name: 'userProfile' }" class="text-[#CED4DA]"
+            <router-link :to="{ name: 'editProfile' }" class="text-[#CED4DA]"
               >Edit your profile</router-link
             >
           </div>

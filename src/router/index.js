@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import LandingPage from "@/views/LandingPage.vue";
 import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
 import MovieList from "@/views/newsFeedPages/MovieList.vue";
-import UserProfile from "@/views/newsFeedPages/UserProfile.vue";
+import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
 import GoogleCallback from "@/views/auth/GoogleCallback.vue";
@@ -88,9 +88,9 @@ const router = createRouter({
       beforeEnter: isAuthenticated,
     },
     {
-      path: "/user-profile",
-      name: "userProfile",
-      component: UserProfile,
+      path: "/edit-profile",
+      name: "editProfile",
+      component: EditProfile,
       beforeEnter: isAuthenticated,
     },
   ],
