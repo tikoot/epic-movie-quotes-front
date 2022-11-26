@@ -1,5 +1,5 @@
 <template>
-  <page-base-component>
+  <page-base-component activeNews>
     <p>news feed</p>
   </page-base-component>
 </template>
