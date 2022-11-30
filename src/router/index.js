@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import LandingPage from "@/views/LandingPage.vue";
 import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
 import MovieList from "@/views/newsFeedPages/MovieList.vue";
+import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
 import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
@@ -86,6 +87,14 @@ const router = createRouter({
       name: "movieList",
       component: MovieList,
       beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/add-movie",
+          name: "addMovie",
+          component: AddMovie,
+          props: true,
+        },
+      ],
     },
     {
       path: "/edit-profile",
