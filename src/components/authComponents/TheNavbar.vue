@@ -3,16 +3,7 @@
     <h1 class="text-[#DDCCAA]">MOVIE QUOTES</h1>
 
     <ul class="flex">
-      <a
-        href="#"
-        class="text-[16px] text-[#fff] flex justify-between items-center pr-[40px]"
-        >Eng
-        <img
-          src="@/assets/images/Vector.png"
-          alt="arrow down"
-          class="pl-[10px] pt-[2.5px]"
-        />
-      </a>
+      <LanguageSelect />
       <li>
         <router-link
           to="/register"
