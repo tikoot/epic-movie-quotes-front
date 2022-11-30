@@ -1,8 +1,8 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center">
-      <h1 class="text-white text-[32px]">Create an account</h1>
-      <p class="text-[#6C757D]">Start your journey!</p>
+      <h1 class="text-white text-[32px]">{{ $t("auth.create_an_account") }}</h1>
+      <p class="text-[#6C757D]">{{ $t("auth.start_your_journey") }}</p>
       <VueForm class="pt-[24px]" @submit="store.handleRegister">
         <div v-if="store.errors !== ''">
           <div v-for="(value, key) in store.errors" :key="key">
@@ -17,7 +17,7 @@
         </div>
         <div class="flex flex-col pb-[16px]">
           <label for="username" class="pb-2 mb-[1px] text-white"
-            >Name<span class="text-[#DC3545]"> *</span></label
+            >{{ $t("auth.name") }}<span class="text-[#DC3545]"> *</span></label
           >
           <Field
             name="username"
@@ -33,7 +33,7 @@
         </div>
         <div class="flex flex-col pb-[16px]">
           <label for="email" class="pb-2 mb-[1px] text-white"
-            >Email<span class="text-[#DC3545]"> *</span></label
+            >{{ $t("auth.email") }}<span class="text-[#DC3545]"> *</span></label
           >
           <Field
             name="email"
@@ -50,7 +50,8 @@
         </div>
         <div class="flex flex-col pb-[16px]">
           <label for="password" class="pb-2 mb-[1px] text-white"
-            >Password<span class="text-[#DC3545]"> *</span></label
+            >{{ $t("auth.password")
+            }}<span class="text-[#DC3545]"> *</span></label
           >
           <div class="relative">
             <Field
@@ -89,7 +90,8 @@
         </div>
         <div class="flex flex-col pb-[16px]">
           <label for="password_confirmation" class="pb-2 mb-[1px] text-white"
-            >Confirm password<span class="text-[#DC3545]"> *</span></label
+            >{{ $t("auth.confirm_password")
+            }}<span class="text-[#DC3545]"> *</span></label
           >
           <div class="relative">
             <Field
@@ -128,7 +130,7 @@
           type="submit"
           class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px]"
         >
-          Get Started
+          {{ $t("auth.get_started") }}
         </button>
       </VueForm>
       <button
@@ -140,14 +142,14 @@
           alt="google icon"
           class="pr-[8px]"
         />
-        Sign up with Google
+        {{ $t("auth.sign_up_with_google") }}
       </button>
       <div class="flex justify-center items-center mt-6">
         <div class="text-[#6C757D] text-center mr-[4px]">
-          already have an account?
+          {{ $t("auth.already_have_an_account") }}
         </div>
         <router-link :to="{ name: 'login' }" class="text-[#0D6EFD] underline">
-          log in
+          {{ $t("auth.log_in") }}
         </router-link>
       </div>
     </div>
