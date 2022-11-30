@@ -27,12 +27,16 @@
 
 <script setup>
 import { setLocale } from "@vee-validate/i18n";
+import { useCommonStore } from "../../stores/common";
+const store = useCommonStore();
 
 function onChange(event) {
   if (event.target.value == "ka") {
     setLocale("ka");
+    store.locale = "ka";
   } else {
     setLocale("en");
+    store.locale = "en";
   }
 }
 </script>
