@@ -4,6 +4,7 @@
   >
     <select
       v-model="$i18n.locale"
+      @change="onChange($event)"
       class="text-[16px] text-[#fff] bg-transparent border-none flex justify-between items-center appearance-none pr-[20px]"
     >
       <option
@@ -23,3 +24,15 @@
     />
   </div>
 </template>
+
+<script setup>
+import { setLocale } from "@vee-validate/i18n";
+
+function onChange(event) {
+  if (event.target.value == "ka") {
+    setLocale("ka");
+  } else {
+    setLocale("en");
+  }
+}
+</script>

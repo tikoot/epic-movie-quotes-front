@@ -3,7 +3,7 @@
     <h1 class="text-[#DDCCAA] place-self-center">MOVIE QUOTES</h1>
 
     <ul class="flex justify-items-center items-center">
-      <li>
+      <li class="mr-[45px]">
         <button class="self-center box-border flex">
           <img
             src="@/assets/images/notificationBell.png"
@@ -11,16 +11,7 @@
           />
         </button>
       </li>
-      <a
-        href="#"
-        class="text-[16px] text-[#fff] pl-[45px] flex justify-between items-center pr-[40px]"
-        >Eng
-        <img
-          src="@/assets/images/Vector.png"
-          alt="arrow down"
-          class="pl-[10px] pt-[2.5px]"
-        />
-      </a>
+      <LanguageSelect />
       <li>
         <router-link
           to=""
