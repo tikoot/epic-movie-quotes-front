@@ -131,6 +131,36 @@
               class="text-[#E31221] text-base pb-[5px] pl-5"
             />
           </div>
+          <div class="w-full mb-[20px]">
+            <Field
+              type="number"
+              name="budget"
+              class="w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
+              placeholder="Budget"
+              v-model.trim="store.budget"
+              rules="required"
+            />
+
+            <ErrorMessage
+              name="budget"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
+          </div>
+          <div class="w-full mb-[20px]">
+            <Field
+              type="number"
+              name="year"
+              class="w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
+              placeholder="Year"
+              v-model.trim="store.year"
+              rules="required"
+            />
+
+            <ErrorMessage
+              name="year"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
+          </div>
 
           <div class="relative w-full mb-[20px]">
             <Field
@@ -151,7 +181,7 @@
           </div>
           <div class="relative w-full mb-[20px]">
             <Field
-              type="textarea"
+              as="textarea"
               name="description_ka"
               class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               v-model.trim="store.description_ka"
@@ -219,6 +249,9 @@ const formSubmit = async () => {
         director_ka: store.director_ka,
         description_en: store.description_en,
         description_ka: store.description_ka,
+        category: store.tags,
+        year: store.year,
+        budget: store.budget,
         thumbnail: store.thumbnail,
       },
       {
