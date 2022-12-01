@@ -24,82 +24,147 @@
             {{ storeCommon.user.username }}
           </h1>
         </div>
-        <VueForm @submit="formSubmit" class="flex flex-col items-center w-full">
-          <div class="relative w-full">
-            <input
+        <VueForm @submit="formSubmit" class="flex flex-col w-full">
+          <div v-if="store.errors !== ''">
+            <div v-for="(value, key) in store.errors" :key="key">
+              <p
+                v-for="error in value"
+                :key="error"
+                class="text-[#E31221] text-base py-[5px]"
+              >
+                {{ error }}
+              </p>
+            </div>
+          </div>
+          <div class="relative w-full mb-[20px]">
+            <Field
               type="text"
               name="movie"
               v-model.trim="store.movie_name_en"
-              class="mb-[20px] w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
+              class="w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
               placeholder="Movie name"
+              rules="required"
             />
-            <span class="absolute bottom-1/2 right-[9px] text-[#6C757D]"
+            <span class="absolute top-[9px] right-[9px] text-[#6C757D]"
               >Eng</span
             >
-          </div>
-          <div class="relative w-full">
-            <input
-              type="text"
-              v-model.trim="store.movie_name_ka"
-              class="mb-[20px] w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
-              placeholder="ფილმის სახელი"
+            <ErrorMessage
+              name="movie"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
             />
-            <span class="absolute bottom-1/2 right-[9px] text-[#6C757D]"
+          </div>
+          <div class="relative w-full mb-[20px]">
+            <Field
+              type="text"
+              name="movie_ka"
+              v-model.trim="store.movie_name_ka"
+              class="w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
+              placeholder="ფილმის სახელი"
+              rules="required"
+            />
+            <span class="absolute top-[9px] right-[9px] text-[#6C757D]"
               >ქარ</span
             >
+            <ErrorMessage
+              name="movie_ka"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
           </div>
 
-          <input
-            type="text"
-            name="category"
-            class="mb-[20px] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
-          />
-          <div class="relative w-full">
-            <input
+          <div
+            class="w-full border-2 border-[#6C757D] bg-[#11101A] mb-[20px] py-[9px] pl-[17px] rounded-[4.8px] max-w-[895px]"
+          >
+            <div
+              v-for="(tag, index) in store.tags"
+              :key="tag"
+              class="text-[#fff] flex items-center float-left bg-[#6C757D] mr-[4px] pl-[6px] pr-[10px] border-2 border-[#6C757D]"
+            >
+              {{ tag }}
+              <img
+                src="@/assets/images/Xvector.png"
+                @click="removeTag(index)"
+                class="cursor-pointer pl-[9px]"
+                alt=""
+              />
+            </div>
+
+            <Field
+              type="text"
+              placeholder="Category"
+              name="category"
+              class="border-none outline-none bg-[#11101A] text-[#fff] placeholder:text-[#fff]"
+              @keydown.enter="addTag"
+            />
+          </div>
+
+          <div class="relative w-full mb-[20px]">
+            <Field
               type="text"
               name="director"
               v-model.trim="store.director_en"
-              class="mb-[20px] w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
+              class="w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
               placeholder="Director"
+              rules="required"
             />
-            <span class="absolute bottom-1/2 right-[9px] text-[#6C757D]"
+            <span class="absolute top-[9px] right-[9px] text-[#6C757D]"
               >Eng</span
             >
+            <ErrorMessage
+              name="director"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
           </div>
-          <div class="relative w-full">
-            <input
+          <div class="relative w-full mb-[20px]">
+            <Field
               type="text"
-              class="mb-[20px] w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
+              name="director_ka"
+              class="w-full relative text-[#fff] placeholder:text-[#fff] border-2 border-[#6C757D] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px]"
               placeholder="რეჟისორი"
               v-model.trim="store.director_ka"
+              rules="required"
             />
-            <span class="absolute bottom-1/2 right-[9px] text-[#6C757D]"
+            <span class="absolute top-[9px] right-[9px] text-[#6C757D]"
               >ქარ</span
             >
+            <ErrorMessage
+              name="director_ka"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
           </div>
 
-          <div class="relative w-full">
-            <textarea
-              type="textarea"
+          <div class="relative w-full mb-[20px]">
+            <Field
+              as="textarea"
               name="description"
               v-model.trim="store.description_en"
-              class="mb-[20px] border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
+              class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               placeholder="Movie description"
-            ></textarea>
+              rules="required"
+            />
             <span class="absolute top-[13px] right-[9px] text-[#6C757D]"
               >Eng</span
             >
+            <ErrorMessage
+              name="description"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
           </div>
-          <div class="relative w-full">
-            <textarea
+          <div class="relative w-full mb-[20px]">
+            <Field
               type="textarea"
-              class="mb-[20px] border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
+              name="description_ka"
+              class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               v-model.trim="store.description_ka"
               placeholder="ფილმის აღწერა"
-            ></textarea>
+              rules="required"
+            />
             <span class="absolute top-[13px] right-[9px] text-[#6C757D]"
               >ქარ</span
             >
+            <ErrorMessage
+              name="description_ka"
+              class="text-[#E31221] text-base pb-[5px] pl-5"
+            />
           </div>
           <input type="file" class="form-control" v-on:change="onFileChange" />
 
@@ -117,7 +182,7 @@
 
 <script setup>
 import axiosInstance from "@/config/axios/axios";
-import { Form as VueForm } from "vee-validate";
+import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 import { useMovieStore } from "../../stores/addMovie";
 import { useCommonStore } from "../../stores/common";
 import { useRouter } from "vue-router";
@@ -128,6 +193,18 @@ const router = useRouter();
 
 const onFileChange = (e) => {
   store.thumbnail = e.target.files[0];
+};
+
+const addTag = (event) => {
+  event.preventDefault();
+  var val = event.target.value.trim();
+  if (val.length > 0) {
+    store.tags.push(val);
+    event.target.value = "";
+  }
+};
+const removeTag = (index) => {
+  store.tags.splice(index, 1);
 };
 
 const formSubmit = async () => {
@@ -153,6 +230,7 @@ const formSubmit = async () => {
       router.replace({ name: "movieList" });
     })
     .catch((error) => {
+      store.errors = error.response.data.errors;
       console.log(error);
     });
 };

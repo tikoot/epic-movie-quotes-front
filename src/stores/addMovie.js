@@ -10,7 +10,9 @@ export const useMovieStore = defineStore("movie", {
       description_ka: "",
       description_en: "",
       thumbnail: "",
+      tags: [],
       user_movies: {},
+      errors: null,
     };
   },
 });
