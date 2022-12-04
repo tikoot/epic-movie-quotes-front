@@ -1,8 +1,10 @@
 <template>
   <page-base-component activeList>
-    <section class="pl-[127px] min-w-[1200px] box-border">
+    <section class="pl-[127px] w-full box-border">
       <div class="flex justify-between items-center">
-        <h1 class="text-2xl text-[#fff]">My list of movies (Total )</h1>
+        <h1 class="text-2xl text-[#fff]">
+          My list of movies (Total {{ storeCommon.movies.length }})
+        </h1>
         <div class="flex items-center">
           <div>search</div>
 
@@ -19,6 +21,36 @@
           </router-link>
         </div>
       </div>
+      <div
+        v-if="storeCommon.movies.length > 0"
+        class="grid grid-cols-3 gap-[50px] pt-[56px]"
+      >
+        <div
+          v-for="movie in storeCommon.movies"
+          :key="movie.id"
+          class="max-w-sm"
+        >
+          <img
+            class="rounded-[12px] w-[382px] h-[322px]"
+            :src="storeCommon.backUrl + '/storage/' + movie.thumbnail"
+          />
+          <div class="flex text-[#fff] text-[24px] pt-[16px]">
+            <div v-if="storeCommon.locale == 'en'">
+              <h1>{{ movie.movie_name.en }} ({{ movie.year }})</h1>
+            </div>
+            <div v-else>
+              <h1>{{ movie.movie_name.ka }} ({{ movie.year }})</h1>
+            </div>
+          </div>
+          <div class="flex pt-[17px]">
+            <p class="text-[20px] pr-[12px] text-[#fff]">quotes</p>
+            <img src="@/assets/images/quoteIcon.png" alt="quote icon" />
+          </div>
+        </div>
+      </div>
+      <div v-else>
+        <h1>You have not added any movies yet</h1>
+      </div>
     </section>
   </page-base-component>
 </template>
@@ -26,17 +58,15 @@
 <script setup>
 import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
-import { useMovieStore } from "../../stores/addMovie";
 import { useCommonStore } from "../../stores/common";
-const store = useMovieStore();
 const storeCommon = useCommonStore();
 
 onMounted(() => {
-  return axios
-    .get("movies/show/" + storeCommon.user.id)
+  axios
+    .get("movies/show/" + localStorage.user_id)
     .then((response) => {
-      console.log(response.data);
-      store.user_movies = response.data;
+      console.log(response);
+      storeCommon.movies = response.data;
     })
     .catch((error) => {
       console.log(error);

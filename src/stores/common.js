@@ -6,6 +6,7 @@ export const useCommonStore = defineStore("common", {
       locale: "en",
       backUrl: import.meta.env.VITE_BASE_URL,
       user: {},
+      movies: {},
     };
   },
 });

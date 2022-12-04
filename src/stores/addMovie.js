@@ -13,7 +13,6 @@ export const useMovieStore = defineStore("movie", {
       year: null,
       budget: null,
       tags: [],
-      user_movies: {},
       errors: null,
     };
   },

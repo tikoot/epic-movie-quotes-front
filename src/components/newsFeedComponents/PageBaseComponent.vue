@@ -103,6 +103,7 @@ onMounted(async () => {
     const response = await axiosInstance.get("/me");
     console.log(response);
     storeCommon.user = response.data.user;
+    localStorage.setItem("user_id", response.data.user.id);
   } catch (err) {
     console.log(err);
   }
