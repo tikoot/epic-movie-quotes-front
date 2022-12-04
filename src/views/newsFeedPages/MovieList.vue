@@ -34,14 +34,17 @@
             class="rounded-[12px] w-[382px] h-[322px]"
             :src="storeCommon.backUrl + '/storage/' + movie.thumbnail"
           />
-          <div class="flex text-[#fff] text-[24px] pt-[16px]">
+          <router-link
+            :to="{ name: 'movieDescription', params: { id: movie.id } }"
+            class="flex text-[#fff] text-[24px] pt-[16px]"
+          >
             <div v-if="storeCommon.locale == 'en'">
               <h1>{{ movie.movie_name.en }} ({{ movie.year }})</h1>
             </div>
             <div v-else>
               <h1>{{ movie.movie_name.ka }} ({{ movie.year }})</h1>
             </div>
-          </div>
+          </router-link>
           <div class="flex pt-[17px]">
             <p class="text-[20px] pr-[12px] text-[#fff]">quotes</p>
             <img src="@/assets/images/quoteIcon.png" alt="quote icon" />

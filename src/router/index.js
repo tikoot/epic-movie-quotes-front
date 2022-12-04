@@ -4,6 +4,7 @@ import LandingPage from "@/views/LandingPage.vue";
 import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
 import MovieList from "@/views/newsFeedPages/MovieList.vue";
 import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
+import MovieDescription from "@/views/newsFeedPages/MovieDescription.vue";
 import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
@@ -95,6 +96,12 @@ const router = createRouter({
           props: true,
         },
       ],
+    },
+    {
+      path: "/movie-description/:id",
+      name: "movieDescription",
+      component: MovieDescription,
+      params: true,
     },
     {
       path: "/edit-profile",
