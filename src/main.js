@@ -9,6 +9,7 @@ import i18n from "@/i18n/index.js";
 import BaseDialog from "@/components/authComponents/BaseDialog.vue";
 import PageBaseComponent from "@/components/newsFeedComponents/PageBaseComponent.vue";
 import PageBaseDialog from "@/components/newsFeedComponents/PageBaseDialog.vue";
+import CrudButtons from "@/components/newsFeedComponents/CrudButtons.vue";
 import LanguageSelect from "@/components/shared/LanguageSelect.vue";
 
 const app = createApp(App);
@@ -22,6 +23,7 @@ app.component("BaseDialog", BaseDialog);
 app.component("PageBaseComponent", PageBaseComponent);
 app.component("PageBaseDialog", PageBaseDialog);
 app.component("LanguageSelect", LanguageSelect);
+app.component("CrudButtons", CrudButtons);
 
 app.use(pinia);
 app.use(router);

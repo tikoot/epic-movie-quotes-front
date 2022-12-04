@@ -101,6 +101,7 @@ const router = createRouter({
       path: "/movie-description/:id",
       name: "movieDescription",
       component: MovieDescription,
+      beforeEnter: isAuthenticated,
       params: true,
     },
     {

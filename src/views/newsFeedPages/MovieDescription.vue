@@ -1,6 +1,6 @@
 <template>
   <page-base-component activeList>
-    <section class="pl-[127px] w-full box-border">
+    <section class="pl-[127px] w-full">
       <h1 class="text-2xl text-[#fff]">Movie Description</h1>
       <div
         v-for="movie in store.movie_description"
@@ -14,16 +14,22 @@
           />
         </div>
         <div>
-          <div v-if="storeCommon.locale == 'en'" class="pb-[24px]">
-            <h1 class="text-[#DDCCAA] text-[24px]">
-              {{ movie.movie_name.en }} ({{ movie.year }})
-            </h1>
+          <div class="flex w-[590px] justify-between">
+            <div>
+              <div v-if="storeCommon.locale == 'en'" class="pb-[24px]">
+                <h1 class="text-[#DDCCAA] text-[24px]">
+                  {{ movie.movie_name.en }} ({{ movie.year }})
+                </h1>
+              </div>
+              <div v-else class="pb-[24px]">
+                <h1 class="text-[#DDCCAA] text-[24px]">
+                  {{ movie.movie_name.ka }} ({{ movie.year }})
+                </h1>
+              </div>
+            </div>
+            <crud-buttons></crud-buttons>
           </div>
-          <div v-else class="pb-[24px]">
-            <h1 class="text-[#DDCCAA] text-[24px]">
-              {{ movie.movie_name.ka }} ({{ movie.year }})
-            </h1>
-          </div>
+
           <div
             v-for="category in JSON.parse(movie.category)"
             :key="category"
