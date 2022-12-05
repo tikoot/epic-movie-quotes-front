@@ -18,7 +18,7 @@
           to="/"
           class="px-[16px] py-[9px] text-[#fff] bg-transparent border-[1px] border-[#fff] rounded"
         >
-          Log out
+          {{ $t("userPage.log_out") }}
         </button>
       </li>
     </ul>

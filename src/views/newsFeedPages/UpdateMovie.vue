@@ -6,7 +6,7 @@
       >
         <div class="flex items-center justify-between">
           <h1 class="text-center w-[120px] text-[#fff] text-[24px]">
-            Edit Movie
+            {{ $t("userPage.edit_movie") }}
           </h1>
           <button @click="this.$router.replace('/movie-list')">
             <img src="@/assets/images/exit.png" alt="exit icon" />
@@ -211,7 +211,7 @@
             class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
             type="submit"
           >
-            Add movie
+            {{ $t("userPage.edit_movie") }}
           </button>
         </VueForm>
       </div>

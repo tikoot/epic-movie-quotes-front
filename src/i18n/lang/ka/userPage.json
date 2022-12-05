@@ -1,0 +1,14 @@
+{
+    "edit_your_profile" : "შეცვალეთ თქვენი პროფილი",
+    "news_feed" : "სიახლეების გვერდი",
+    "list_of_movies" : "ფილმების სია",
+    "log_out" : "გამოსვლა",
+    "my_list_of_movies" : "ჩემი ფილმების სია",
+    "total": "სულ",
+    "add_movie" : "ფილმის დამატება",
+    "edit_movie" : "ფილმის რედაქტირება",
+    "you_have_not_added_any_movies_yet" : "თქვენ ჯერ არ დაგიმატებიათ არცერთი ფილმი",
+    "movie_description" : "ფილმის აღწერა",
+    "director":"რეჟისორი",
+    "budget":"ბიუჯეტი"
+}

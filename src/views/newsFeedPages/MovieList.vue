@@ -3,11 +3,10 @@
     <section class="pl-[127px] w-full box-border">
       <div class="flex justify-between items-center">
         <h1 class="text-2xl text-[#fff]">
-          My list of movies (Total {{ storeCommon.movies.length }})
+          {{ $t("userPage.my_list_of_movies") }} ( {{ $t("userPage.total") }}
+          {{ storeCommon.movies.length }})
         </h1>
         <div class="flex items-center">
-          <div>search</div>
-
           <router-link
             :to="{ name: 'addMovie' }"
             class="flex items-center px-[17px] py-[9px] text-xl text-[#fff] bg-[#E31221] border-[1px] border-[#E31221] rounded"
@@ -17,7 +16,7 @@
               alt="add icon"
               class="mr-[8px]"
             />
-            Add movie
+            {{ $t("userPage.add_movie") }}
           </router-link>
         </div>
       </div>
@@ -52,7 +51,9 @@
         </div>
       </div>
       <div v-else>
-        <h1>You have not added any movies yet</h1>
+        <h1 class="pt-[50px] text-[#fff] text-lg">
+          {{ $t("userPage.you_have_not_added_any_movies_yet") }}
+        </h1>
       </div>
     </section>
   </page-base-component>

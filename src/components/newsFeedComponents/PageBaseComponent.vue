@@ -21,9 +21,9 @@
             <h1 class="text-2xl text-[#FFFFFF]">
               {{ storeCommon.user.username }}
             </h1>
-            <router-link :to="{ name: 'editProfile' }" class="text-[#CED4DA]"
-              >Edit your profile</router-link
-            >
+            <router-link :to="{ name: 'editProfile' }" class="text-[#CED4DA]">{{
+              $t("userPage.edit_your_profile")
+            }}</router-link>
           </div>
         </div>
         <div class="pt-[40px] flex items-center">
@@ -42,7 +42,7 @@
           <router-link
             :to="{ name: 'newsFeed' }"
             class="text-2xl text-[#FFFFFF] pl-[43px]"
-            >News feed</router-link
+            >{{ $t("userPage.news_feed") }}</router-link
           >
         </div>
         <div class="pt-[40px] flex items-center">
@@ -61,7 +61,7 @@
           <router-link
             :to="{ name: 'movieList' }"
             class="text-2xl text-[#FFFFFF] pl-[43px]"
-            >List of movies</router-link
+            >{{ $t("userPage.list_of_movies") }}</router-link
           >
         </div>
       </div>

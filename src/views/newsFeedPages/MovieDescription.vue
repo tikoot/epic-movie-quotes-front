@@ -1,7 +1,9 @@
 <template>
   <page-base-component activeList>
     <section class="pl-[127px] w-full">
-      <h1 class="text-2xl text-[#fff]">Movie Description</h1>
+      <h1 class="text-2xl text-[#fff]">
+        {{ $t("userPage.movie_description") }}
+      </h1>
       <div
         v-for="movie in store.movie_description"
         :key="movie.id"
@@ -45,7 +47,7 @@
 
           <div class="pb-[20px]">
             <p class="text-[#CED4DA] text-[18px]">
-              Director:
+              {{ $t("userPage.director") }}:
               <span v-if="storeCommon.locale == 'en'" class="text-[#fff]">{{
                 movie.director.en
               }}</span>
@@ -54,7 +56,7 @@
           </div>
           <div class="pb-[20px]">
             <p class="text-[#CED4DA] text-[18px]">
-              Budget:
+              {{ $t("userPage.budget") }}:
               <span class="text-[#fff]">{{ movie.budget }}$</span>
             </p>
           </div>
