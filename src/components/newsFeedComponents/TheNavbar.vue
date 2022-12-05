@@ -13,12 +13,29 @@
       </li>
       <LanguageSelect />
       <li>
-        <router-link
-          to=""
+        <button
+          @click="logout"
+          to="/"
           class="px-[16px] py-[9px] text-[#fff] bg-transparent border-[1px] border-[#fff] rounded"
-          >Log out</router-link
         >
+          Log out
+        </button>
       </li>
     </ul>
   </nav>
 </template>
+
+<script setup>
+import axiosInstance from "@/config/axios/axios";
+import { useRouter } from "vue-router";
+const router = useRouter();
+const logout = async () => {
+  try {
+    axiosInstance.get("/logout");
+  } catch (err) {
+    console.log(err);
+  } finally {
+    router.push("/");
+  }
+};
+</script>
