@@ -29,23 +29,20 @@
             </div>
             <crud-buttons></crud-buttons>
           </div>
-
-          <div
-            v-for="category in JSON.parse(movie.category)"
-            :key="category"
-            class="pb-[20px] flex"
-          >
-            <p
-              class="rounded-[4px] mr-[8px] bg-[#6C757D] py-[6px] px-[11px] text-[#fff] text-[18px] font-bold w-fit"
+          <div class="flex">
+            <div
+              v-for="category in JSON.parse(movie.category)"
+              :key="category"
+              class="pb-[20px] flex"
             >
-              {{ category }}
-            </p>
-            <p
-              class="rounded-[4px] bg-[#6C757D] py-[6px] px-[11px] text-[#fff] text-[18px] font-bold w-fit"
-            >
-              {{ category }}
-            </p>
+              <p
+                class="rounded-[4px] mr-[8px] bg-[#6C757D] py-[6px] px-[11px] text-[#fff] text-[18px] font-bold w-fit"
+              >
+                {{ category }}
+              </p>
+            </div>
           </div>
+
           <div class="pb-[20px]">
             <p class="text-[#CED4DA] text-[18px]">
               Director:

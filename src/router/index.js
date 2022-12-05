@@ -5,6 +5,7 @@ import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
 import MovieList from "@/views/newsFeedPages/MovieList.vue";
 import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
 import MovieDescription from "@/views/newsFeedPages/MovieDescription.vue";
+import UpdateMovie from "@/views/newsFeedPages/UpdateMovie.vue";
 import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
@@ -101,8 +102,15 @@ const router = createRouter({
       path: "/movie-description/:id",
       name: "movieDescription",
       component: MovieDescription,
-      beforeEnter: isAuthenticated,
       params: true,
+      beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/update",
+          name: "updateMovie",
+          component: UpdateMovie,
+        },
+      ],
     },
     {
       path: "/edit-profile",
