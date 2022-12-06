@@ -80,7 +80,7 @@
               v-model.trim="store.quote_en"
               class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               placeholder="“Quote in English.”"
-              rules="required"
+              rules="required|english_alphabet"
             />
             <span class="absolute top-[13px] right-[9px] text-[#6C757D]"
               >Eng</span
@@ -97,7 +97,7 @@
               v-model.trim="store.quote_ka"
               class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               placeholder="“ციტატა ქართულ ენაზე”"
-              rules="required"
+              rules="required|georgian_alphabet"
             />
             <span class="absolute top-[13px] right-[9px] text-[#6C757D]"
               >Ka</span

@@ -70,7 +70,31 @@
           </div>
         </div>
       </div>
-      <div></div>
+      <div class="pt-[48px]">
+        <div class="flex items-center">
+          <h1 class="text-[24px] text-[#fff]">
+            {{ $t("userPage.quote") }} ({{ $t("userPage.total") }}
+
+            {{ store.Quotelength }})
+          </h1>
+          <img
+            src="@/assets/images/divideline.png"
+            alt="line"
+            class="px-[25px]"
+          />
+          <router-link
+            :to="{ name: 'addQuote' }"
+            class="flex items-center px-[17px] py-[9px] text-xl text-[#fff] bg-[#E31221] border-[1px] border-[#E31221] rounded"
+          >
+            <img
+              src="@/assets/images/addicon.png"
+              alt="add icon"
+              class="mr-[8px]"
+            />
+            {{ $t("userPage.add_quote") }}
+          </router-link>
+        </div>
+      </div>
     </section>
   </page-base-component>
 </template>
@@ -90,6 +114,17 @@ onMounted(() => {
     .get("movies/" + route.params.id)
     .then((response) => {
       store.movie_description = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  axios
+    .get("quotes/show/" + route.params.id)
+    .then((response) => {
+      store.quotes = response.data;
+      store.Quotelength = response.data.length;
+      console.log(response);
     })
     .catch((error) => {
       console.log(error);
