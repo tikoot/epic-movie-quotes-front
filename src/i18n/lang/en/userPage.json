@@ -10,6 +10,8 @@
     "you_have_not_added_any_movies_yet" : "You have not added any movies yet",
     "movie_description" : "Movie Description",
     "director":"Director",
-    "budget":"Budget"
+    "budget":"Budget",
+    "add_quote" : "Add quote",
+    "quote" : "Quote"
 
 }

@@ -4,6 +4,7 @@ import LandingPage from "@/views/LandingPage.vue";
 import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
 import MovieList from "@/views/newsFeedPages/MovieList.vue";
 import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
+import AddQuote from "@/views/newsFeedPages/AddQuote.vue";
 import MovieDescription from "@/views/newsFeedPages/MovieDescription.vue";
 import UpdateMovie from "@/views/newsFeedPages/UpdateMovie.vue";
 import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
@@ -110,8 +111,14 @@ const router = createRouter({
           name: "updateMovie",
           component: UpdateMovie,
         },
+        {
+          path: "/add-quote",
+          name: "addQuote",
+          component: AddQuote,
+        },
       ],
     },
+
     {
       path: "/edit-profile",
       name: "editProfile",

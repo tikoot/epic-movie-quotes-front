@@ -10,5 +10,7 @@
     "you_have_not_added_any_movies_yet" : "თქვენ ჯერ არ დაგიმატებიათ არცერთი ფილმი",
     "movie_description" : "ფილმის აღწერა",
     "director":"რეჟისორი",
-    "budget":"ბიუჯეტი"
+    "budget":"ბიუჯეტი",
+    "add_quote" : "ციტატის დამატება",
+    "quote" : "ციტატა"
 }
