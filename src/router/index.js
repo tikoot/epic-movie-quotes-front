@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import LandingPage from "@/views/LandingPage.vue";
-import NewsFeed from "@/views/NewsFeed.vue";
+import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
+import MovieList from "@/views/newsFeedPages/MovieList.vue";
+import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
+import AddQuote from "@/views/newsFeedPages/AddQuote.vue";
+import MovieDescription from "@/views/newsFeedPages/MovieDescription.vue";
+import UpdateMovie from "@/views/newsFeedPages/UpdateMovie.vue";
+import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
 import GoogleCallback from "@/views/auth/GoogleCallback.vue";
@@ -76,6 +82,47 @@ const router = createRouter({
       path: "/news-feed",
       name: "newsFeed",
       component: NewsFeed,
+      beforeEnter: isAuthenticated,
+    },
+
+    {
+      path: "/movie-list",
+      name: "movieList",
+      component: MovieList,
+      beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/add-movie",
+          name: "addMovie",
+          component: AddMovie,
+          props: true,
+        },
+      ],
+    },
+    {
+      path: "/movie-description/:id",
+      name: "movieDescription",
+      component: MovieDescription,
+      params: true,
+      beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/update",
+          name: "updateMovie",
+          component: UpdateMovie,
+        },
+        {
+          path: "/add-quote",
+          name: "addQuote",
+          component: AddQuote,
+        },
+      ],
+    },
+
+    {
+      path: "/edit-profile",
+      name: "editProfile",
+      component: EditProfile,
       beforeEnter: isAuthenticated,
     },
   ],

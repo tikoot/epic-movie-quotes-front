@@ -1,10 +1,12 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center pt-[40px]">
-      <h1 class="text-white text-[32px]">Create new password</h1>
+      <h1 class="text-white text-[32px]">
+        {{ $t("auth.create_new_password") }}
+      </h1>
       <p class="text-[#6C757D] pt-[8px] text-center">
-        Your new password must be different from <br />
-        previous used passwords
+        {{ $t("auth.your_new_password_must_be_different_from") }} <br />
+        {{ $t("auth.previous_used_passwords") }}
       </p>
       <VueForm class="pt-[24px]" @submit="store.resetPassword">
         <div v-if="store.passwordErrors !== ''">
@@ -20,7 +22,8 @@
         </div>
         <div class="flex flex-col pb-[16px]">
           <label for="password" class="pb-2 mb-[1px] text-white"
-            >Password<span class="text-[#DC3545]"> *</span></label
+            >{{ $t("auth.password")
+            }}<span class="text-[#DC3545]"> *</span></label
           >
           <div class="relative">
             <Field
@@ -59,7 +62,8 @@
         </div>
         <div class="flex flex-col pb-[16px]">
           <label for="password_confirmation" class="pb-2 mb-[1px] text-white"
-            >Confirm password<span class="text-[#DC3545]"> *</span></label
+            >{{ $t("auth.confirm_password")
+            }}<span class="text-[#DC3545]"> *</span></label
           >
           <div class="relative">
             <Field
@@ -98,7 +102,7 @@
           type="submit"
           class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px]"
         >
-          Reset password
+          {{ $t("auth.reset_password") }}
         </button>
       </VueForm>
       <div class="flex justify-center items-center mt-6">
@@ -109,7 +113,7 @@
           <img src="@/assets/images/arrowBack.png" alt="arrow" />
         </router-link>
         <div class="text-[#6C757D] text-center mr-[4px] pl-[12px]">
-          Back to log in
+          {{ $t("auth.back_to_log_in") }}
         </div>
       </div>
     </div>

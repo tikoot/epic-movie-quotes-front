@@ -1,13 +1,17 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center">
-      <h1 class="text-white text-[32px]">Log in to your account</h1>
+      <h1 class="text-white text-[32px]">
+        {{ $t("auth.log_in_to_your_account") }}
+      </h1>
       <p class="text-[#6C757D] pt-[8px]">
-        Welcome back! Please enter your details.
+        {{ $t("auth.welcome_back_please_enter_your_details") }}
       </p>
       <VueForm class="pt-[24px]" @submit="onSumbit">
         <div class="flex flex-col pb-[16px]">
-          <label for="email" class="pb-2 mb-[1px] text-white">Email</label>
+          <label for="email" class="pb-2 mb-[1px] text-white">{{
+            $t("auth.email")
+          }}</label>
           <Field
             name="email"
             type="email"
@@ -22,9 +26,9 @@
           />
         </div>
         <div class="flex flex-col pb-[16px]">
-          <label for="password" class="pb-2 mb-[1px] text-white"
-            >Password</label
-          >
+          <label for="password" class="pb-2 mb-[1px] text-white">{{
+            $t("auth.password")
+          }}</label>
 
           <div class="relative">
             <Field
@@ -70,21 +74,21 @@
               class="w-4 h-4 border-lightgray border border-solid rounded-md"
             />
             <label for="remember" class="text-white pl-[8px]"
-              >Remember me
+              >{{ $t("auth.remember_me") }}
             </label>
           </div>
           <router-link
             :to="{ name: 'forgotPassword' }"
             class="text-[#0D6EFD] underline"
           >
-            Forgot password
+            {{ $t("auth.forgot_password") }}
           </router-link>
         </div>
         <button
           type="submit"
           class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px]"
         >
-          Sign in
+          {{ $t("auth.sign_in") }}
         </button>
       </VueForm>
       <button
@@ -96,17 +100,17 @@
           alt="google icon"
           class="pr-[8px]"
         />
-        Sign up with Google
+        {{ $t("auth.sign_up_with_google") }}
       </button>
       <div class="flex justify-center items-center mt-6">
         <div class="text-[#6C757D] text-center mr-[4px]">
-          Don’t have an account?
+          {{ $t("auth.dont_have_an_account") }}
         </div>
         <router-link
           :to="{ name: 'register' }"
           class="text-[#0D6EFD] underline"
         >
-          Sign up
+          {{ $t("auth.sign_up") }}
         </router-link>
       </div>
     </div>

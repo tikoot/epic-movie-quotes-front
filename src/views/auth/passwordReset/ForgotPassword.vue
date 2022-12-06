@@ -1,11 +1,10 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center pt-[40px]">
-      <h1 class="text-white text-[32px]">Forgot password?</h1>
+      <h1 class="text-white text-[32px]">{{ $t("auth.forgot_password") }}?</h1>
       <p class="text-[#6C757D] pt-[8px] text-center">
-        Enter the email and we’ll send an email with<br />
-
-        instructions to reset your password
+        {{ $t("auth.enter_the_email_and_we_send_an_email_with") }}<br />
+        {{ $t("auth.instructions_to_reset_your_password") }}
       </p>
       <VueForm class="pt-[24px]" @submit="store.forgotPassword">
         <div v-if="store.errors !== ''">
@@ -20,7 +19,9 @@
           </div>
         </div>
         <div class="flex flex-col pb-[16px]">
-          <label for="email" class="pb-2 mb-[1px] text-white">Email</label>
+          <label for="email" class="pb-2 mb-[1px] text-white">{{
+            $t("auth.email")
+          }}</label>
           <Field
             name="email"
             type="email"
@@ -39,7 +40,7 @@
           type="submit"
           class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px]"
         >
-          Send instructions
+          {{ $t("auth.send_instructions") }}
         </button>
       </VueForm>
       <div class="flex justify-center items-center mt-6">
@@ -50,7 +51,7 @@
           <img src="@/assets/images/arrowBack.png" alt="arrow" />
         </router-link>
         <div class="text-[#6C757D] text-center mr-[4px] pl-[12px]">
-          Back to log in
+          {{ $t("auth.back_to_log_in") }}
         </div>
       </div>
     </div>

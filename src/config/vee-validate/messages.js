@@ -15,6 +15,8 @@ configure({
         symbols:
           "{field} must contain only lowercase Latin characters and numbers",
         confirmed: "This field must match the password field",
+        english_alphabet: "This field must contain only english letters",
+        georgian_alphabet: "This field must contain only georgian letters",
       },
 
       names: {},
@@ -29,6 +31,8 @@ configure({
         symbols:
           "{field} უნდა შეიცავდეს მხოლოდ დაბალი რეგისტრის ლათინურ სიმბოლოებს და რიცხვებს",
         confirmed: "ეს ველი უნდა შეესაბამებოდეს პაროლის ველს",
+        english_alphabet: "ეს ველი უნდა შეიცავდეს მხოლოდ ინგლისურ ასოებს",
+        georgian_alphabet: "ეს ველი უნდა შეიცავდეს მხოლოდ ქართული ასოებს",
       },
 
       names: {

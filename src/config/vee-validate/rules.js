@@ -15,3 +15,23 @@ defineRule("symbols", (value) => {
   }
   return true;
 });
+
+defineRule("english_alphabet", (value) => {
+  if (!value || !value.length) {
+    return true;
+  }
+  if (!/^[a-zA-Z_.]+$/.test(value)) {
+    return false;
+  }
+  return true;
+});
+
+defineRule("georgian_alphabet", (value) => {
+  if (!value || !value.length) {
+    return true;
+  }
+  if (!/^[ა-ჰ_.]+$/.test(value)) {
+    return false;
+  }
+  return true;
+});
