@@ -16,6 +16,12 @@ export const useMovieStore = defineStore("movie", {
       errors: null,
       movie_description: null,
       quotes: null,
+      visible: false,
     };
+  },
+  actions: {
+    toggleShow() {
+      this.visible = !this.visible;
+    },
   },
 });

@@ -12,6 +12,7 @@
     "director":"Director",
     "budget":"Budget",
     "add_quote" : "Add quote",
-    "quote" : "Quote"
+    "quote" : "Quote",
+    "view_quote" : "View Quote"
 
 }

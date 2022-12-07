@@ -20,6 +20,7 @@ import SuccessMessage from "@/views/auth/passwordReset/SuccessMessage.vue";
 import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
+import ViewQuote from "../views/newsFeedPages/ViewQuote.vue";
 
 axios.defaults.withCredentials = true;
 
@@ -115,6 +116,12 @@ const router = createRouter({
           path: "/add-quote",
           name: "addQuote",
           component: AddQuote,
+        },
+        {
+          path: "/view-quote/:id",
+          name: "viewQuote",
+          component: ViewQuote,
+          params: true,
         },
       ],
     },
