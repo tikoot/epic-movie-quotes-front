@@ -94,6 +94,72 @@
             {{ $t("userPage.add_quote") }}
           </router-link>
         </div>
+
+        <div v-for="quote in store.quotes" :key="quote.id" class="pt-[76px]">
+          <div
+            class="bg-[#11101A] px-[32px] py-[24px] rounded-[10px] w-[809px] relative"
+          >
+            <div class="">
+              <div class="flex items-center">
+                <div>
+                  <img
+                    class="w-[226px] h-[140px] pr-[33px] z-0"
+                    :src="storeCommon.backUrl + '/storage/' + quote.thumbnail"
+                  />
+                </div>
+                <div v-if="storeCommon.locale == 'en'" class="pb-[24px]">
+                  <h1 class="text-[#CED4DA] text-[24px] max-w-[477px]">
+                    "{{ quote.quote.en }}"
+                  </h1>
+                </div>
+                <div v-else class="pb-[24px]">
+                  <h1 class="text-[#CED4DA] text-[24px] max-w-[477px]">
+                    "{{ quote.quote.ka }}"
+                  </h1>
+                </div>
+              </div>
+              <button
+                class="absolute top-[34px] right-[34px] z-40"
+                @click="store.toggleShow"
+              >
+                <img
+                  src="@/assets/images/Vectordots.png"
+                  alt=""
+                  class="w-[20px] z-40"
+                />
+              </button>
+            </div>
+            <div
+              v-if="store.visible"
+              class="box-border text-[white] absolute top-[48px] left-[753px] px-[40px] py-[32px] z-40 rounded-[10px] bg-[#24222F] w-[250px]"
+            >
+              <router-link
+                :to="{ name: 'viewQuote', params: { id: quote.id } }"
+                class="flex items-center pb-[32px]"
+              >
+                <img
+                  src="@/assets/images/Vectoreye.png"
+                  alt="icon of eye"
+                  class="pr-[16px]"
+                />view quote
+              </router-link>
+              <button class="flex items-center pb-[32px]">
+                <img
+                  src="@/assets/images/Vectorpen.png"
+                  alt="icon of pen"
+                  class="pr-[16px]"
+                />Edit
+              </button>
+              <button class="flex items-center">
+                <img
+                  src="@/assets/images/Vectorbin.png"
+                  alt="icon of bin"
+                  class="pr-[16px]"
+                />Delete
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </page-base-component>
