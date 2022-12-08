@@ -141,12 +141,12 @@
 <script setup>
 import axiosInstance from "@/config/axios/axios";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
-import { useMovieStore } from "../../stores/addMovie";
+import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
 import { useRouter } from "vue-router";
 
 const storeCommon = useCommonStore();
-const store = useMovieStore();
+const store = useCrudStore();
 const router = useRouter();
 
 const onFileChange = (e) => {

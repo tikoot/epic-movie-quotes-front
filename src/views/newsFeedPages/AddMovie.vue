@@ -213,11 +213,11 @@
 <script setup>
 import axiosInstance from "@/config/axios/axios";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
-import { useMovieStore } from "../../stores/addMovie";
+import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
 import { useRouter } from "vue-router";
 
-const store = useMovieStore();
+const store = useCrudStore();
 const storeCommon = useCommonStore();
 const router = useRouter();
 

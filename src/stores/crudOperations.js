@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axiosInstance from "@/config/axios/axios";
 
-export const useMovieStore = defineStore("movie", {
+export const useCrudStore = defineStore("crudOperations", {
   state: () => {
     return {
       movie_name_en: "",

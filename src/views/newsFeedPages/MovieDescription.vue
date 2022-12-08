@@ -175,10 +175,10 @@
 import { useRoute } from "vue-router";
 import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
-import { useMovieStore } from "../../stores/addMovie";
+import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
 const storeCommon = useCommonStore();
-const store = useMovieStore();
+const store = useCrudStore();
 const route = useRoute();
 
 onMounted(() => {

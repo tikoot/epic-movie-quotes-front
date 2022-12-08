@@ -95,11 +95,11 @@ import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 import { useRoute, useRouter } from "vue-router";
-import { useMovieStore } from "../../stores/addMovie";
+import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
 
 const storeCommon = useCommonStore();
-const store = useMovieStore();
+const store = useCrudStore();
 const route = useRoute();
 const router = useRouter();
 
