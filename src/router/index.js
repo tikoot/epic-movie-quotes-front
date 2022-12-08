@@ -21,6 +21,7 @@ import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
 import ViewQuote from "../views/newsFeedPages/ViewQuote.vue";
+import EditQuote from "../views/newsFeedPages/EditQuote.vue";
 
 axios.defaults.withCredentials = true;
 
@@ -121,6 +122,12 @@ const router = createRouter({
           path: "/view-quote/:id",
           name: "viewQuote",
           component: ViewQuote,
+          params: true,
+        },
+        {
+          path: "/edit-quote/:id",
+          name: "editQuote",
+          component: EditQuote,
           params: true,
         },
       ],
