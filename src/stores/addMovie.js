@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import axiosInstance from "@/config/axios/axios";
 
 export const useMovieStore = defineStore("movie", {
   state: () => {
@@ -22,6 +23,17 @@ export const useMovieStore = defineStore("movie", {
   actions: {
     toggleShow() {
       this.visible = !this.visible;
+    },
+    deleteQuote(id) {
+      axiosInstance
+        .delete("quotes/" + id)
+        .then((response) => {
+          console.log(response);
+          this.router.back();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 });
