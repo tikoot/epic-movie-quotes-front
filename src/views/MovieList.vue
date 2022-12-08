@@ -62,7 +62,7 @@
 <script setup>
 import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
-import { useCommonStore } from "../../stores/common";
+import { useCommonStore } from "../stores/common";
 const storeCommon = useCommonStore();
 
 onMounted(() => {

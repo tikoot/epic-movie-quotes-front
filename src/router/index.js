@@ -1,13 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import LandingPage from "@/views/LandingPage.vue";
-import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
-import MovieList from "@/views/newsFeedPages/MovieList.vue";
-import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
-import AddQuote from "@/views/newsFeedPages/AddQuote.vue";
-import MovieDescription from "@/views/newsFeedPages/MovieDescription.vue";
-import UpdateMovie from "@/views/newsFeedPages/UpdateMovie.vue";
-import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
+import NewsFeed from "@/views/NewsFeed.vue";
+import MovieList from "@/views/MovieList.vue";
+import EditProfile from "@/views/EditProfile.vue";
+import AddMovie from "@/views/crudOperations/AddMovie.vue";
+import AddQuote from "@/views/crudOperations/AddQuote.vue";
+import MovieDescription from "@/views/crudOperations/MovieDescription.vue";
+import ViewQuote from "@/views/crudOperations/ViewQuote.vue";
+import EditQuote from "@/views/crudOperations/EditQuote.vue";
+import UpdateMovie from "@/views/crudOperations/UpdateMovie.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
 import GoogleCallback from "@/views/auth/GoogleCallback.vue";
@@ -20,8 +22,6 @@ import SuccessMessage from "@/views/auth/passwordReset/SuccessMessage.vue";
 import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
-import ViewQuote from "../views/newsFeedPages/ViewQuote.vue";
-import EditQuote from "../views/newsFeedPages/EditQuote.vue";
 
 axios.defaults.withCredentials = true;
 
