@@ -285,6 +285,7 @@ const update = async () => {
       router.replace({ name: "movieDescription", params: { id: data.id } });
     })
     .catch((error) => {
+      store.errors = error.response.data.errors;
       console.log(error);
     });
 };

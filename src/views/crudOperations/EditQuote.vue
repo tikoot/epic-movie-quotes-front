@@ -34,6 +34,17 @@
           :key="quote.id"
           @submit="updateQuote"
         >
+          <div v-if="store.errors !== ''">
+            <div v-for="(value, key) in store.errors" :key="key">
+              <p
+                v-for="error in value"
+                :key="error"
+                class="text-[#E31221] text-base py-[5px]"
+              >
+                {{ error }}
+              </p>
+            </div>
+          </div>
           <div class="relative w-full mb-[20px]">
             <Field
               as="textarea"
@@ -146,6 +157,7 @@ const updateQuote = async () => {
       });
     })
     .catch((error) => {
+      store.errors = error.response.data.errors;
       console.log(error);
     });
 };

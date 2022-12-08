@@ -73,6 +73,17 @@
           </div>
         </div>
         <VueForm @submit="storeQuote" class="flex flex-col w-full">
+          <div v-if="store.errors !== ''">
+            <div v-for="(value, key) in store.errors" :key="key">
+              <p
+                v-for="error in value"
+                :key="error"
+                class="text-[#E31221] text-base py-[5px]"
+              >
+                {{ error }}
+              </p>
+            </div>
+          </div>
           <div class="relative w-full mb-[20px]">
             <Field
               as="textarea"
@@ -97,7 +108,7 @@
               v-model.trim="store.quote_ka"
               class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               placeholder="“ციტატა ქართულ ენაზე”"
-              rules="required|georgian_alphabet"
+              rules="required"
             />
             <span class="absolute top-[13px] right-[9px] text-[#6C757D]"
               >Ka</span
