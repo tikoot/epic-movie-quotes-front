@@ -13,6 +13,7 @@
     "budget":"Budget",
     "add_quote" : "Add quote",
     "quote" : "Quote",
-    "view_quote" : "View Quote"
+    "view_quote" : "View Quote",
+    "edit_quote" : "Edit Quote"
 
 }

@@ -18,6 +18,7 @@ export const useMovieStore = defineStore("movie", {
       movie_description: null,
       quotes: null,
       visible: false,
+      eachQuote: null,
     };
   },
   actions: {
