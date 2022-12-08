@@ -143,14 +143,20 @@
                   class="pr-[16px]"
                 />view quote
               </router-link>
-              <button class="flex items-center pb-[32px]">
+              <router-link
+                :to="{ name: 'editQuote', params: { id: quote.id } }"
+                class="flex items-center pb-[32px]"
+              >
                 <img
                   src="@/assets/images/Vectorpen.png"
                   alt="icon of pen"
                   class="pr-[16px]"
                 />Edit
-              </button>
-              <button class="flex items-center">
+              </router-link>
+              <button
+                class="flex items-center"
+                @click="store.deleteQuote(quote.id)"
+              >
                 <img
                   src="@/assets/images/Vectorbin.png"
                   alt="icon of bin"

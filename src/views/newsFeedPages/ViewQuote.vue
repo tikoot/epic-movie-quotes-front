@@ -6,7 +6,7 @@
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center">
-            <router-link :to="{}">
+            <router-link :to="{ name: 'editQuote' }">
               <img
                 src="@/assets/images/VectorEdit.png"
                 alt="edit icon"
@@ -14,7 +14,7 @@
               />
             </router-link>
             <img src="@/assets/images/Line8.png" alt="line" class="px-[25px]" />
-            <button>
+            <button @click="store.deleteQuote(route.params.id)">
               <img src="@/assets/images/VectorDelete.png" alt="delete icon" />
             </button>
           </div>
