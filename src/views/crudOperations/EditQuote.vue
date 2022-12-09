@@ -6,7 +6,11 @@
       >
         <div class="flex items-center justify-between">
           <div class="flex items-center">
-            <button @click="store.deleteQuote(route.params.id)">
+            <button
+              @click="
+                store.deleteQuote(route.params.id, store.eachQuote[0].movie_id)
+              "
+            >
               <img src="@/assets/images/VectorDelete.png" alt="delete icon" />
             </button>
           </div>
@@ -152,6 +156,7 @@ const updateQuote = async () => {
     )
     .then((response) => {
       console.log(response);
+      store.showQuotes(store.eachQuote[0].movie_id);
       router.replace({
         name: "movieDescription",
         params: { id: route.params.id },

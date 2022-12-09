@@ -26,12 +26,16 @@ export const useCrudStore = defineStore("crudOperations", {
     toggleShow() {
       this.visible = !this.visible;
     },
-    deleteQuote(id) {
+    deleteQuote(id, param) {
       axiosInstance
         .delete("quotes/" + id)
         .then((response) => {
           console.log(response);
-          this.router.back();
+          this.showQuotes(param);
+          this.router.replace({
+            name: "movieDescription",
+            params: { id: param },
+          });
         })
         .catch((error) => {
           console.log(error);

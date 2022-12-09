@@ -155,7 +155,7 @@
               </router-link>
               <button
                 class="flex items-center"
-                @click="store.deleteQuote(quote.id)"
+                @click="store.deleteQuote(quote.id, route.params.id)"
               >
                 <img
                   src="@/assets/images/Vectorbin.png"

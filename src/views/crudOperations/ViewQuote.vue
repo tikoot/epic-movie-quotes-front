@@ -14,7 +14,11 @@
               />
             </router-link>
             <img src="@/assets/images/Line8.png" alt="line" class="px-[25px]" />
-            <button @click="store.deleteQuote(route.params.id)">
+            <button
+              @click="
+                store.deleteQuote(route.params.id, store.eachQuote[0].movie_id)
+              "
+            >
               <img src="@/assets/images/VectorDelete.png" alt="delete icon" />
             </button>
           </div>
@@ -66,18 +70,24 @@
           </div>
         </div>
 
-        <div class="pt-[32px]">
+        <div
+          class="pt-[32px]"
+          v-for="quotes in store.eachQuote"
+          :key="quotes.id"
+        >
           <div class="flex pb-[43px]">
             <div class="flex items-center pr-[24px]">
-              <p class="text-[#fff] pr-[12px]">raod</p>
+              <p class="text-[#fff] pr-[12px] text-[20px]">
+                {{ quotes.comments.length }}
+              </p>
               <img src="@/assets/images/Vectorcomment.png" alt="" />
             </div>
             <div class="flex items-center">
-              <p class="text-[#fff] pr-[12px]">raod</p>
+              <p class="text-[#fff] pr-[12px] text-[20px]">raod</p>
               <img src="@/assets/images/Vectorlike.png" alt="" />
             </div>
           </div>
-          <div v-for="quotes in store.eachQuote" :key="quotes.id">
+          <div>
             <div
               class="flex pb-[35px]"
               v-for="comments in quotes.comments"

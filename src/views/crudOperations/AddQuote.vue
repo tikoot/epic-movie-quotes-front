@@ -181,6 +181,8 @@ const storeQuote = async () => {
     )
     .then((response) => {
       console.log(response);
+      store.quote_en = "";
+      store.quote_ka = "";
       store.showQuotes(store.movie_description[0].id);
       router.back();
     })
