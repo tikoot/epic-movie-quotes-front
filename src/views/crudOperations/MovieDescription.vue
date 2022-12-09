@@ -173,7 +173,6 @@
 
 <script setup>
 import { useRoute } from "vue-router";
-import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
 import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
@@ -182,24 +181,7 @@ const store = useCrudStore();
 const route = useRoute();
 
 onMounted(() => {
-  axios
-    .get("movies/" + route.params.id)
-    .then((response) => {
-      store.movie_description = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-  axios
-    .get("quotes/show/" + route.params.id)
-    .then((response) => {
-      store.quotes = response.data;
-      store.Quotelength = response.data.length;
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  store.movieDescription(route.params.id);
+  store.showQuotes(route.params.id);
 });
 </script>

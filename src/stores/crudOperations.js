@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axiosInstance from "@/config/axios/axios";
+import axios from "@/config/axios/axios.js";
 
 export const useCrudStore = defineStore("crudOperations", {
   state: () => {
@@ -31,6 +32,28 @@ export const useCrudStore = defineStore("crudOperations", {
         .then((response) => {
           console.log(response);
           this.router.back();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    movieDescription(param) {
+      axios
+        .get("movies/" + param)
+        .then((response) => {
+          this.movie_description = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    showQuotes(param) {
+      axios
+        .get("quotes/show/" + param)
+        .then((response) => {
+          this.quotes = response.data;
+          this.Quotelength = response.data.length;
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);

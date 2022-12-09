@@ -282,6 +282,7 @@ const update = async () => {
     )
     .then((response) => {
       console.log(response);
+      store.movieDescription(data.id);
       router.replace({ name: "movieDescription", params: { id: data.id } });
     })
     .catch((error) => {

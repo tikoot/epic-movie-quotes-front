@@ -108,7 +108,7 @@
               v-model.trim="store.quote_ka"
               class="border-2 border-[#6C757D] text-[#fff] placeholder:text-[#fff] bg-[#11101A] py-[9px] pl-[17px] rounded-[4.8px] w-full"
               placeholder="“ციტატა ქართულ ენაზე”"
-              rules="required"
+              rules="required|georgian_alphabet"
             />
             <span class="absolute top-[13px] right-[9px] text-[#6C757D]"
               >Ka</span
@@ -181,6 +181,7 @@ const storeQuote = async () => {
     )
     .then((response) => {
       console.log(response);
+      store.showQuotes(store.movie_description[0].id);
       router.back();
     })
     .catch((error) => {

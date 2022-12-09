@@ -260,6 +260,7 @@ const formSubmit = async () => {
     )
     .then((response) => {
       console.log(response);
+      storeCommon.showMovies();
       router.replace({ name: "movieList" });
     })
     .catch((error) => {

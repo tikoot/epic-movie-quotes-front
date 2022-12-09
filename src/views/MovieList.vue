@@ -60,20 +60,11 @@
 </template>
 
 <script setup>
-import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
 import { useCommonStore } from "../stores/common";
 const storeCommon = useCommonStore();
 
 onMounted(() => {
-  axios
-    .get("movies/show/" + localStorage.user_id)
-    .then((response) => {
-      console.log(response);
-      storeCommon.movies = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  storeCommon.showMovies();
 });
 </script>
