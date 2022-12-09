@@ -138,6 +138,7 @@ const updateQuote = async () => {
       {
         id: store.eachQuote[0].id,
         movie_id: store.eachQuote[0].movie_id,
+        user_id: store.eachQuote[0].user_id,
         quote_en: store.eachQuote[0].quote.en,
         quote_ka: store.eachQuote[0].quote.ka,
         thumbnail: store.quote_thumbnail,

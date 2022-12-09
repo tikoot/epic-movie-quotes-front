@@ -170,6 +170,7 @@ const storeQuote = async () => {
       "quotes/store",
       {
         movie_id: store.movie_description[0].id,
+        user_id: store.movie_description[0].user_id,
         quote_en: store.quote_en,
         quote_ka: store.quote_ka,
         thumbnail: store.quote_thumbnail,

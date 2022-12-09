@@ -65,6 +65,39 @@
             />
           </div>
         </div>
+
+        <div class="pt-[32px]">
+          <div class="flex pb-[43px]">
+            <div class="flex items-center pr-[24px]">
+              <p class="text-[#fff] pr-[12px]">raod</p>
+              <img src="@/assets/images/Vectorcomment.png" alt="" />
+            </div>
+            <div class="flex items-center">
+              <p class="text-[#fff] pr-[12px]">raod</p>
+              <img src="@/assets/images/Vectorlike.png" alt="" />
+            </div>
+          </div>
+          <div v-for="quotes in store.eachQuote" :key="quotes.id">
+            <div
+              class="flex pb-[35px]"
+              v-for="comments in quotes.comments"
+              :key="comments.id"
+            >
+              <img
+                :src="storeCommon.backUrl + comments.user.avatar"
+                alt=""
+                class="w-[52px] h-[52px] rounded-[50%]"
+              />
+              <div class="text-[#fff] pl-[24px]">
+                <p>{{ comments.user.username }}</p>
+                <p class="max-w-[814px] pt-[11px] pb-[24px]">
+                  {{ comments.body }}
+                </p>
+                <img src="@/assets/images/divyLine.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </page-base-dialog>
