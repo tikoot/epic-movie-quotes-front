@@ -97,6 +97,21 @@
               </div>
             </div>
           </div>
+          <VueForm @submit="storeComment" class="pb-[33px] flex">
+            <img
+              :src="storeCommon.backUrl + storeCommon.user.avatar"
+              alt="user avatar"
+              class="w-[52px] h-[52px] rounded-[50%]"
+            />
+            <input
+              name=""
+              id=""
+              v-model="store.comments"
+              placeholder="Write a comment"
+              class="ml-[24px] w-full bg-[#24222F] text-[#CED4DA] rounded-[10px] placeholder:text-[#CED4DA] pl-[27px] py-[11px] h-[52px] box-border"
+            />
+            <input type="submit" hidden />
+          </VueForm>
         </div>
       </div>
     </section>
@@ -105,15 +120,17 @@
 
 <script setup>
 import axios from "@/config/axios/axios.js";
+import axiosInstance from "@/config/axios/axios.js";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
+import { Form as VueForm } from "vee-validate";
 const storeCommon = useCommonStore();
 const store = useCrudStore();
 const route = useRoute();
 
-onMounted(() => {
+const getQuotes = async () => {
   axios
     .get("quotes/" + route.params.id)
     .then((response) => {
@@ -123,5 +140,32 @@ onMounted(() => {
     .catch((error) => {
       console.log(error);
     });
+};
+
+onMounted(() => {
+  getQuotes();
 });
+
+const storeComment = async () => {
+  axiosInstance
+    .post(
+      "quotes/" + store.eachQuote[0].id + "/comments",
+      {
+        user_id: store.eachQuote[0].user_id,
+        body: store.comments,
+      },
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    )
+    .then((response) => {
+      store.comments = "";
+      getQuotes();
+      console.log(response);
+    })
+    .catch((error) => {
+      store.errors = error.response.data.errors;
+      console.log(error);
+    });
+};
 </script>
