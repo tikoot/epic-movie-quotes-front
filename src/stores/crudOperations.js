@@ -12,6 +12,7 @@ export const useCrudStore = defineStore("crudOperations", {
       description_ka: "",
       description_en: "",
       thumbnail: "",
+      quote_thumbnail: "",
       year: null,
       budget: null,
       tags: [],

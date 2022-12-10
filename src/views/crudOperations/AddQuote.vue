@@ -118,12 +118,15 @@
               class="text-[#E31221] text-base pb-[5px] pl-5"
             />
           </div>
-
-          <input
-            type="file"
-            class="w-[895px] mb-[28px]"
-            v-on:change="onFileChange"
-          />
+          <div
+            class="w-full h-[84px] flex items-center border-[#6C757D] border-[1px] rounded-[4px] mb-[40px]"
+          >
+            <DragAndDrop
+              @drop.prevent="drop"
+              @change="selectedFile"
+              :thumbnail="store.quote_thumbnail.name"
+            ></DragAndDrop>
+          </div>
           <select
             disabled
             class="bg-[#000] text-[#fff] mb-[48px] py-[15px] px-[32px]"
@@ -150,6 +153,7 @@
 </template>
 
 <script setup>
+import DragAndDrop from "@/components/newsFeedComponents/DragAndDrop.vue";
 import axiosInstance from "@/config/axios/axios";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 import { useCrudStore } from "../../stores/crudOperations";
@@ -160,8 +164,11 @@ const storeCommon = useCommonStore();
 const store = useCrudStore();
 const router = useRouter();
 
-const onFileChange = (e) => {
-  store.quote_thumbnail = e.target.files[0];
+const drop = (e) => {
+  store.quote_thumbnail = e.dataTransfer.files[0];
+};
+const selectedFile = () => {
+  store.quote_thumbnail = document.querySelector(".dropzoneFile").files[0];
 };
 
 const storeQuote = async () => {
