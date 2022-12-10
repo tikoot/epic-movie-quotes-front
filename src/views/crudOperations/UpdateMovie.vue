@@ -205,8 +205,27 @@
             />
           </div>
 
-          <input type="file" class="form-control" v-on:change="onFileChange" />
-
+          <div class="w-full flex items-center text-[#fff] text-[20px]">
+            <div @change="selectedFile">
+              <label for="dropzoneFile" class="bg-[#9747FF] p-[10px]"
+                >Change photo</label
+              >
+              <input
+                type="file"
+                id="dropzoneFile"
+                class="hidden dropzoneFile"
+              />
+            </div>
+            <img
+              :src="
+                store.movie_edit_thumbnail == null
+                  ? storeCommon.backUrl + '/storage/' + movie.thumbnail
+                  : store.url
+              "
+              alt=""
+              class="w-[43px] h-[43px] ml-[10px]"
+            />
+          </div>
           <button
             class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
             type="submit"
@@ -230,8 +249,9 @@ const store = useCrudStore();
 const storeCommon = useCommonStore();
 const router = useRouter();
 
-const onFileChange = (e) => {
-  store.thumbnail = e.target.files[0];
+const selectedFile = () => {
+  store.movie_edit_thumbnail = document.querySelector(".dropzoneFile").files[0];
+  store.url = URL.createObjectURL(store.movie_edit_thumbnail);
 };
 
 const addTag = (event) => {
@@ -271,7 +291,7 @@ const update = async () => {
         category: store.tags,
         year: data.year,
         budget: data.budget,
-        thumbnail: store.thumbnail,
+        thumbnail: store.movie_edit_thumbnail,
       },
       {
         headers: {

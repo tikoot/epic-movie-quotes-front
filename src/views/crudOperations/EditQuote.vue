@@ -83,15 +83,34 @@
               class="text-[#E31221] text-base pb-[5px] pl-5"
             />
           </div>
-          <input type="file" class="form-control" v-on:change="onFileChange" />
-          <img
-            :src="
-              store.quote_thumbnail == null
-                ? storeCommon.backUrl + '/storage/' + quote.thumbnail
-                : store.url
-            "
-            alt=""
-          />
+          <div class="w-[897px] h-[513px]">
+            <img
+              :src="
+                store.quote_edit_thumbnail == null
+                  ? storeCommon.backUrl + '/storage/' + quote.thumbnail
+                  : store.url
+              "
+              alt=""
+              class="w-[897px] h-[513px] rounded-[10px] absolute"
+            />
+            <div
+              @change="selectedFile"
+              class="bg-[url('@/assets/images/Rectan60.png')] w-[135px] h-[84px] flex flex-col items-center px-[16px] py-[10px] relative top-[50%] left-[381px] rounded-[10px] text-[#fff]"
+            >
+              <img
+                src="@/assets/images/photoIcon.png"
+                alt="camera icon"
+                class=""
+              />
+
+              <label for="dropzoneFile" class="">Change photo</label>
+              <input
+                type="file"
+                id="dropzoneFile"
+                class="hidden dropzoneFile"
+              />
+            </div>
+          </div>
           <button
             class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
             type="submit"
@@ -118,9 +137,9 @@ const store = useCrudStore();
 const route = useRoute();
 const router = useRouter();
 
-const onFileChange = (e) => {
-  store.quote_thumbnail = e.target.files[0];
-  store.url = URL.createObjectURL(store.quote_thumbnail);
+const selectedFile = () => {
+  store.quote_edit_thumbnail = document.querySelector(".dropzoneFile").files[0];
+  store.url = URL.createObjectURL(store.quote_edit_thumbnail);
 };
 
 onMounted(() => {
@@ -145,7 +164,7 @@ const updateQuote = async () => {
         user_id: store.eachQuote[0].user_id,
         quote_en: store.eachQuote[0].quote.en,
         quote_ka: store.eachQuote[0].quote.ka,
-        thumbnail: store.quote_thumbnail,
+        thumbnail: store.quote_edit_thumbnail,
       },
       {
         headers: {

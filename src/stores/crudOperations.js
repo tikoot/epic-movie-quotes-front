@@ -13,6 +13,8 @@ export const useCrudStore = defineStore("crudOperations", {
       description_en: "",
       thumbnail: "",
       quote_thumbnail: "",
+      quote_edit_thumbnail: null,
+      movie_edit_thumbnail: null,
       year: null,
       budget: null,
       tags: [],
