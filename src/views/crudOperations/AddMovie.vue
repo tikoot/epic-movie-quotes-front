@@ -196,10 +196,17 @@
               class="text-[#E31221] text-base pb-[5px] pl-5"
             />
           </div>
-          <input type="file" class="form-control" v-on:change="onFileChange" />
-
+          <div
+            class="w-full h-[84px] flex items-center border-[#6C757D] border-[1px] rounded-[4px]"
+          >
+            <DragAndDrop
+              @drop.prevent="drop"
+              @change="selectedFile"
+              :thumbnail="store.thumbnail.name"
+            ></DragAndDrop>
+          </div>
           <button
-            class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
+            class="w-full mt-[32px] rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mb-[44px]"
             type="submit"
           >
             {{ $t("userPage.add_movie") }}
@@ -211,6 +218,7 @@
 </template>
 
 <script setup>
+import DragAndDrop from "@/components/newsFeedComponents/DragAndDrop.vue";
 import axiosInstance from "@/config/axios/axios";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
 import { useCrudStore } from "../../stores/crudOperations";
@@ -221,8 +229,11 @@ const store = useCrudStore();
 const storeCommon = useCommonStore();
 const router = useRouter();
 
-const onFileChange = (e) => {
-  store.thumbnail = e.target.files[0];
+const drop = (e) => {
+  store.thumbnail = e.dataTransfer.files[0];
+};
+const selectedFile = () => {
+  store.thumbnail = document.querySelector(".dropzoneFile").files[0];
 };
 
 const addTag = (event) => {

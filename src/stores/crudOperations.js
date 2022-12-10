@@ -20,6 +20,8 @@ export const useCrudStore = defineStore("crudOperations", {
       quotes: null,
       visible: false,
       eachQuote: null,
+      isDragging: false,
+      dragCount: 0,
     };
   },
   actions: {
