@@ -83,8 +83,17 @@
               <img src="@/assets/images/Vectorcomment.png" alt="" />
             </div>
             <div class="flex items-center">
-              <p class="text-[#fff] pr-[12px] text-[20px]">raod</p>
-              <img src="@/assets/images/Vectorlike.png" alt="" />
+              <p class="text-[#fff] pr-[12px] text-[20px]">
+                {{ quotes.likes.length }}
+              </p>
+              <button @click.prevent="likeQuote">
+                <img
+                  v-if="quotes.likes.length == 0"
+                  src="@/assets/images/Vectorlike.png"
+                  alt=""
+                />
+                <img v-else src="@/assets/images/redLike.png" alt="" />
+              </button>
             </div>
           </div>
           <div>
@@ -139,6 +148,21 @@ import { Form as VueForm } from "vee-validate";
 const storeCommon = useCommonStore();
 const store = useCrudStore();
 const route = useRoute();
+
+const likeQuote = async () => {
+  axios
+    .post("quote-like/", {
+      id: route.params.id,
+      user_id: store.eachQuote[0].user_id,
+    })
+    .then((response) => {
+      getQuotes();
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 const getQuotes = async () => {
   axios
