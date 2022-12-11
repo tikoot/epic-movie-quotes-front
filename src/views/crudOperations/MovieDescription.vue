@@ -1,6 +1,6 @@
 <template>
   <page-base-component activeList>
-    <section class="pl-[127px] w-full">
+    <section class="pl-[127px] w-full overflow-auto min-h-[100vh]">
       <h1 class="text-2xl text-[#fff]">
         {{ $t("userPage.movie_description") }}
       </h1>

@@ -1,7 +1,7 @@
 <template>
-  <div class="h-[100vh] bg-[#151320]">
+  <div class="h-[screen] bg-[#151320]">
     <the-navbar></the-navbar>
-    <div class="px-[70px] pt-[32px] flex">
+    <div class="px-[70px] pt-[32px] flex bg-[#151320]">
       <div class="max-w-[300px] flex flex-col">
         <div class="flex items-center">
           <img
