@@ -127,19 +127,26 @@
               :thumbnail="store.quote_thumbnail.name"
             ></DragAndDrop>
           </div>
-          <select
-            disabled
-            class="bg-[#000] text-[#fff] mb-[48px] py-[15px] px-[32px]"
-          >
-            <option
-              v-for="movie in store.movie_description"
-              :key="movie.id"
-              :value="movie.id"
-              class="bg-[#000] text-[#fff]"
+          <div class="relative w-full">
+            <img
+              src="@/assets/images/VectorCamera.png"
+              alt=""
+              class="absolute left-[24px] top-[18px]"
+            />
+            <select
+              disabled
+              class="bg-[#000] w-full text-[#fff] text-[24px] mb-[48px] pb-[15px] pt-[25px] pl-[68px] pr-[32px] rounded-[4px]"
             >
-              {{ movie.movie_name.en }}
-            </option>
-          </select>
+              <option
+                v-for="movie in store.movie_description"
+                :key="movie.id"
+                :value="movie.id"
+                class="bg-[#000] text-[#fff]"
+              >
+                {{ movie.movie_name.en }}
+              </option>
+            </select>
+          </div>
           <button
             class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
             type="submit"

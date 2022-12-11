@@ -12,7 +12,7 @@
         class="pl-[425px] pr-[41px] border-b border-[#efefef33] pt-[33px] pb-[23px]"
       >
         <div class="flex items-center justify-between">
-          <h1 class="text-center w-[120px] text-[#fff] text-[24px]">
+          <h1 class="text-center w-[189px] text-[#fff] text-[24px]">
             {{ $t("userPage.write_new_quote") }}
           </h1>
           <button @click="this.$router.back()">
@@ -83,19 +83,27 @@
             :thumbnail="store.quote_thumbnail.name"
           ></DragAndDrop>
         </div>
-
-        <select class="text-red-700 block" @change="onChange($event)">
-          <option disabled select selected>Choose movie</option>
-          <option
-            class="text-red-700"
-            :value="movie.id"
-            v-for="movie in storeCommon.movies"
-            :key="movie.id"
+        <div class="relative w-full">
+          <img
+            src="@/assets/images/VectorCamera.png"
+            alt=""
+            class="absolute left-[24px] top-[18px]"
+          />
+          <select
+            class="bg-[#000] w-full text-[#fff] text-[24px] mb-[48px] pb-[15px] pt-[25px] pl-[68px] pr-[32px] rounded-[4px]"
+            @change="onChange($event)"
           >
-            {{ movie.movie_name.en }}
-          </option>
-        </select>
-
+            <option disabled select selected>Choose movie</option>
+            <option
+              class="text-[#fff]"
+              :value="movie.id"
+              v-for="movie in storeCommon.movies"
+              :key="movie.id"
+            >
+              {{ movie.movie_name.en }}
+            </option>
+          </select>
+        </div>
         <button
           class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
           type="submit"
