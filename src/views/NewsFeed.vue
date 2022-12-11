@@ -1,6 +1,35 @@
 <template>
   <page-base-component activeNews>
     <section class="pl-[127px] w-full box-border overscroll-auto">
+      <div class="pb-[22px] flex items-center">
+        <div>
+          <router-link
+            :to="{ name: 'QuoteFromNews' }"
+            class="flex items-center rounded-[10px] text-[#fff] py-[11px] px-[16px] bg-[#24222F]"
+          >
+            <img
+              src="@/assets/images/pencil-square.png"
+              alt=""
+              class="pr-[16px]"
+            />
+            {{ $t("userPage.write_new_quote") }}
+          </router-link>
+        </div>
+        <form action="" class="relative">
+          <img
+            src="@/assets/images/Vectorsearch.png"
+            alt=""
+            class="absolute top-5 left-[32px]"
+          />
+          <input
+            type=""
+            value=""
+            name="search"
+            class="bg-[#151320] outline-0 border-b-[1px] border-b-[#efefef4d] ml-[32px] py-[17px] text-[#CED4DA] placeholder:text-[#CED4DA] w-[688px] pl-[36px]"
+            placeholder="Enter @ to search movies, Enter # to search quotes "
+          />
+        </form>
+      </div>
       <div
         v-for="quote in storeCommon.quotes_all"
         :key="quote.id"

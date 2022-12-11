@@ -14,6 +14,8 @@
     "add_quote" : "Add quote",
     "quote" : "Quote",
     "view_quote" : "View Quote",
-    "edit_quote" : "Edit Quote"
+    "edit_quote" : "Edit Quote",
+    "write_new_quote" : "Write new quote"
+
 
 }
