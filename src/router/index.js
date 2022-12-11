@@ -7,6 +7,7 @@ import EditProfile from "@/views/EditProfile.vue";
 import AddMovie from "@/views/crudOperations/AddMovie.vue";
 import AddQuote from "@/views/crudOperations/AddQuote.vue";
 import MovieDescription from "@/views/crudOperations/MovieDescription.vue";
+import QuoteFromNews from "@/views/crudOperations/QuoteFromNews.vue";
 import ViewQuote from "@/views/crudOperations/ViewQuote.vue";
 import EditQuote from "@/views/crudOperations/EditQuote.vue";
 import UpdateMovie from "@/views/crudOperations/UpdateMovie.vue";
@@ -85,6 +86,13 @@ const router = createRouter({
       name: "newsFeed",
       component: NewsFeed,
       beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/add-quote",
+          name: "QuoteFromNews",
+          component: QuoteFromNews,
+        },
+      ],
     },
 
     {
