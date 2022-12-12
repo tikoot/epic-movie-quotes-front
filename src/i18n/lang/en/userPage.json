@@ -15,7 +15,8 @@
     "quote" : "Quote",
     "view_quote" : "View Quote",
     "edit_quote" : "Edit Quote",
-    "write_new_quote" : "Write new quote"
+    "write_new_quote" : "Write new quote",
+    "no_quotes_have_been_added_yet" : "No quotes have been added yet"
 
 
 }

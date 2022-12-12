@@ -10,6 +10,7 @@ export const useCommonStore = defineStore("common", {
       movies: {},
       quotes_all: [],
       params: {},
+      searchString: null,
     };
   },
   actions: {
@@ -68,6 +69,20 @@ export const useCommonStore = defineStore("common", {
           }
         };
       }, 2000);
+    },
+    getResults() {
+      setTimeout(() => {
+        axios
+          .get("/quotes-all", { params: { search: this.searchString } })
+          .then((response) => {
+            this.quotes_all = response.data.data;
+            this.params.next_page_url = response.data.next_page_url;
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, 500);
     },
   },
 });

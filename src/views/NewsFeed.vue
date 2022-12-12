@@ -15,20 +15,20 @@
             {{ $t("userPage.write_new_quote") }}
           </router-link>
         </div>
-        <form action="" class="relative">
+        <VueForm class="relative">
           <img
             src="@/assets/images/Vectorsearch.png"
             alt=""
             class="absolute top-5 left-[32px]"
           />
           <input
-            type=""
-            value=""
+            v-model="storeCommon.searchString"
+            type="text"
             name="search"
             class="bg-[#151320] outline-0 border-b-[1px] border-b-[#efefef4d] ml-[32px] py-[17px] text-[#CED4DA] placeholder:text-[#CED4DA] w-[688px] pl-[36px]"
             placeholder="Enter @ to search movies, Enter # to search quotes "
           />
-        </form>
+        </VueForm>
       </div>
       <div
         v-for="quote in storeCommon.quotes_all"
@@ -131,13 +131,18 @@
           <input type="submit" hidden />
         </VueForm>
       </div>
+      <div v-if="storeCommon.quotes_all.length == 0" class="h-[100vh]">
+        <h1 class="pt-[50px] text-[#fff] text-lg">
+          {{ $t("userPage.no_quotes_have_been_added_yet") }}
+        </h1>
+      </div>
     </section>
   </page-base-component>
 </template>
 
 <script setup>
 import axios from "@/config/axios/axios.js";
-import { onMounted } from "vue";
+import { onMounted, watchEffect } from "vue";
 import axiosInstance from "@/config/axios/axios.js";
 import { useCrudStore } from "../stores/crudOperations";
 import { useCommonStore } from "../stores/common";
@@ -182,6 +187,11 @@ const storeComment = async (id, user_id) => {
       console.log(error);
     });
 };
+
+watchEffect(() => {
+  storeCommon.getResults(storeCommon.searchString);
+  console.log(storeCommon.searchString);
+});
 
 onMounted(() => {
   storeCommon.allQuotes();

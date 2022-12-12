@@ -15,5 +15,6 @@
     "quote" : "ციტატა",
     "view_quote" : "ციტატის ნახვა",
     "edit_quote" : "ციტატის რედაქტირება",
-    "write_new_quote" : "დაწერეთ ახალი ციტატა"
+    "write_new_quote" : "დაწერეთ ახალი ციტატა",
+    "no_quotes_have_been_added_yet" : "ციტატები ჯერ არ დამატებულა"
 }
