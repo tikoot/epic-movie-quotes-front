@@ -23,6 +23,7 @@ import SuccessMessage from "@/views/auth/passwordReset/SuccessMessage.vue";
 import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
+import ForbiddenPage from "../views/ForbiddenPage.vue";
 
 axios.defaults.withCredentials = true;
 
@@ -146,6 +147,11 @@ const router = createRouter({
       name: "editProfile",
       component: EditProfile,
       beforeEnter: isAuthenticated,
+    },
+    {
+      path: "/forbidden",
+      name: "forbidden",
+      component: ForbiddenPage,
     },
   ],
 });
