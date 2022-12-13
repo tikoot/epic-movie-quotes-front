@@ -1,5 +1,24 @@
 <template>
-  <nav class="flex justify-between py-[26px] px-[70px] bg-[#222030]">
+  <nav class="flex justify-between items-center px-[38px] py-[36px] sm:hidden">
+    <button><img src="@/assets/images/list.png" alt="" /></button>
+    <div class="flex justify-between items-center">
+      <button>
+        <img
+          src="@/assets/images/VectorSEarch.png"
+          alt=""
+          class="w-[24px] h-[24px]"
+        />
+      </button>
+      <button class="self-center box-border flex ml-[24px]">
+        <img
+          class="w-[26px] h-[26px]"
+          src="@/assets/images/notificationBell.png"
+          alt="notificaiton bell"
+        />
+      </button>
+    </div>
+  </nav>
+  <nav class="hidden sm:flex justify-between py-[26px] px-[70px] bg-[#222030]">
     <h1 class="text-[#DDCCAA] place-self-center">MOVIE QUOTES</h1>
 
     <ul class="flex justify-items-center items-center">

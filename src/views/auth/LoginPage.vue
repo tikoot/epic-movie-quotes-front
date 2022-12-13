@@ -1,7 +1,7 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center">
-      <h1 class="text-white text-[32px]">
+      <h1 class="text-white text-[16px] sm:text-[32px]">
         {{ $t("auth.log_in_to_your_account") }}
       </h1>
       <p class="text-[#6C757D] pt-[8px]">
