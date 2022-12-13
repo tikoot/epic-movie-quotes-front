@@ -24,6 +24,7 @@ import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
 import ForbiddenPage from "../views/ForbiddenPage.vue";
+import NotFound from "../views/NotFound.vue";
 
 axios.defaults.withCredentials = true;
 
@@ -153,6 +154,7 @@ const router = createRouter({
       name: "forbidden",
       component: ForbiddenPage,
     },
+    { path: "/:notFound(.*)", name: "notFound", component: NotFound },
   ],
 });
 

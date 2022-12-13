@@ -1,5 +1,5 @@
 <template>
-  <nav class="hidden sm:flex justify-between pt-[31px] px-[70px]">
+  <nav class="flex justify-between px-[35px] pt-[31px] sm:px-[70px]">
     <h1 class="text-[#DDCCAA]">MOVIE QUOTES</h1>
 
     <ul class="flex items-center">
