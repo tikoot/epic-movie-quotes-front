@@ -17,7 +17,7 @@ axiosInstance.interceptors.response.use(
     if (error.response.status == 401) {
       const authStore = useAuthStore();
       authStore.authenticated = false;
-      router.push("/");
+      router.push("/forbidden");
     }
     return Promise.reject(error);
   }
