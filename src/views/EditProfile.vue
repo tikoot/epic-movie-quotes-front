@@ -193,4 +193,17 @@ const updateUser = async () => {
       console.log(error);
     });
 };
+
+onMounted(() => {
+  if (route.query) {
+    return axios
+      .get("/secondary-email/" + route.query.token)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+});
 </script>
