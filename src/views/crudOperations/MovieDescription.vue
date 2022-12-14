@@ -12,7 +12,7 @@
         <div>
           <img
             class="rounded-[12px] w-[809px] h-[481px] pr-[33px]"
-            :src="storeCommon.backUrl + '/storage/' + movie.thumbnail"
+            :src="storeCommon.backUrl + 'storage/' + movie.thumbnail"
           />
         </div>
         <div>
@@ -104,7 +104,7 @@
                 <div>
                   <img
                     class="w-[226px] h-[140px] pr-[33px] z-0"
-                    :src="storeCommon.backUrl + '/storage/' + quote.thumbnail"
+                    :src="storeCommon.backUrl + 'storage/' + quote.thumbnail"
                   />
                 </div>
                 <div v-if="storeCommon.locale == 'en'" class="pb-[24px]">

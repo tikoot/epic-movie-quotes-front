@@ -6,13 +6,13 @@
         <div class="flex items-center">
           <img
             v-if="activeUser"
-            :src="storeCommon.backUrl + storeCommon.user.avatar"
+            :src="storeCommon.backUrl + 'storage/' + storeCommon.user.avatar"
             alt="user avatar"
             class="object-contain h-[60px] w-[60px] rounded-full border-2 border-[#E31221] bg-[#D9D9D9]"
           />
           <img
             v-else
-            :src="storeCommon.backUrl + storeCommon.user.avatar"
+            :src="storeCommon.backUrl + 'storage/' + storeCommon.user.avatar"
             alt="user avatar"
             class="object-contain h-[60px] w-[60px] rounded-full bg-[#D9D9D9]"
           />

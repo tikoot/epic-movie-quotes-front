@@ -17,7 +17,7 @@
       <div class="px-[32px]">
         <div class="flex items-center justify-start pb-[28px] pt-[30px]">
           <img
-            :src="storeCommon.backUrl + storeCommon.user.avatar"
+            :src="storeCommon.backUrl + 'storage/' + storeCommon.user.avatar"
             alt="user avatar"
             class="object-contain h-[60px] w-[60px] rounded-full bg-[#D9D9D9]"
           />
@@ -219,7 +219,7 @@
             <img
               :src="
                 store.movie_edit_thumbnail == null
-                  ? storeCommon.backUrl + '/storage/' + movie.thumbnail
+                  ? storeCommon.backUrl + 'storage/' + movie.thumbnail
                   : store.url
               "
               alt=""

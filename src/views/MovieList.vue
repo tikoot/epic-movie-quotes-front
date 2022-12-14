@@ -33,7 +33,7 @@
         >
           <img
             class="rounded-[12px] w-[382px] h-[322px]"
-            :src="storeCommon.backUrl + '/storage/' + movie.thumbnail"
+            :src="storeCommon.backUrl + 'storage/' + movie.thumbnail"
           />
           <router-link
             :to="{ name: 'movieDescription', params: { id: movie.id } }"
