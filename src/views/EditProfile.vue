@@ -86,6 +86,19 @@
             </div>
 
             <div v-if="storeCommon.user.google_id == null">
+              <div>
+                <router-link
+                  :to="{ name: 'addEmail' }"
+                  class="flex items-center border-[#D9D9D9] border-[1px] mb-[80px] rounded-[4.8px] max-w-[191px] text-[#fff] py-[11px] px-[10px] bg-transparent"
+                >
+                  <img
+                    src="@/assets/images/Union.png"
+                    alt=""
+                    class="pr-[16px]"
+                  />
+                  {{ $t("userPage.add_new_email") }}
+                </router-link>
+              </div>
               <div class="flex justify-start items-center sm:text-base text-xs">
                 <div class="flex flex-col sm:w-[360px] w-[200px]">
                   <label
@@ -139,11 +152,16 @@
 </template>
 
 <script setup>
+import axios from "@/config/axios/axios.js";
+import { onMounted } from "vue";
 import axiosInstance from "@/config/axios/axios.js";
 import { useCommonStore } from "../stores/common";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
+import { useRoute } from "vue-router";
 
 const storeCommon = useCommonStore();
+
+const route = useRoute();
 
 const selectedFile = () => {
   storeCommon.update_user_avatar =

@@ -16,6 +16,7 @@ import LoginPage from "@/views/auth/LoginPage.vue";
 import GoogleCallback from "@/views/auth/GoogleCallback.vue";
 import SendEmail from "@/views/auth/email/SendEmail.vue";
 import VerifyEmail from "@/views/auth/email/VerifyEmail.vue";
+import AddEmail from "@/views/auth/email/AddEmail.vue";
 import ForgotPassword from "@/views/auth/passwordReset/ForgotPassword.vue";
 import SendPasswordEmail from "@/views/auth/passwordReset/SendPasswordEmail.vue";
 import ResetPassword from "@/views/auth/passwordReset/ResetPassword.vue";
@@ -148,6 +149,13 @@ const router = createRouter({
       name: "editProfile",
       component: EditProfile,
       beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/add-email",
+          name: "addEmail",
+          component: AddEmail,
+        },
+      ],
     },
     {
       path: "/forbidden",
