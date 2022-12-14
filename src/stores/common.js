@@ -16,6 +16,7 @@ export const useCommonStore = defineStore("common", {
       readonly: true,
       readonlyPass: true,
       update_user_avatar: null,
+      change_email: "",
     };
   },
   actions: {
