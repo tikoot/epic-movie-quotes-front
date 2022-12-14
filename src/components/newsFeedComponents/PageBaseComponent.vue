@@ -2,7 +2,7 @@
   <div class="h-[screen] bg-[#151320]">
     <the-navbar></the-navbar>
     <div class="px-[70px] pt-[32px] flex bg-[#151320]">
-      <div class="hidden sm:max-w-[300px] sm:flex sm:items-center flex-col">
+      <div class="hidden sm:max-w-[300px] sm:flex sm:items-start flex-col">
         <div class="flex items-center">
           <img
             v-if="activeUser"
@@ -103,6 +103,8 @@ onMounted(async () => {
     const response = await axiosInstance.get("/me");
     console.log(response);
     storeCommon.user = response.data.user;
+    storeCommon.username = response.data.user.username;
+    storeCommon.avatar = response.data.user.avatar;
     localStorage.setItem("user_id", response.data.user.id);
   } catch (err) {
     console.log(err);

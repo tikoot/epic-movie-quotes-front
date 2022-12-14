@@ -11,6 +11,11 @@ export const useCommonStore = defineStore("common", {
       quotes_all: [],
       params: {},
       searchString: null,
+      username: "",
+      avatar: "",
+      readonly: true,
+      readonlyPass: true,
+      update_user_avatar: null,
     };
   },
   actions: {
@@ -83,6 +88,12 @@ export const useCommonStore = defineStore("common", {
             console.log(error);
           });
       }, 500);
+    },
+    editProfile() {
+      this.readonly = false;
+    },
+    editPassword() {
+      this.readonlyPass = false;
     },
   },
 });
