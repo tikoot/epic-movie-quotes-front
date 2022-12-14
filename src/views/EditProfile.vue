@@ -61,6 +61,30 @@
               </button>
             </div>
 
+            <div
+              class="flex justify-start items-center sm:text-base text-xs mb-[56px] mt-[41px]"
+            >
+              <div class="flex flex-col sm:w-[360px] w-[200px]">
+                <label
+                  for="email"
+                  class="block text-sm font-medium text-white mb-2"
+                  >{{ $t("auth.email") }}</label
+                >
+                <div class="relative mt-1 rounded-md shadow-sm">
+                  <input
+                    readonly
+                    v-model="storeCommon.user.email"
+                    class="py-2 px-5 block w-full rounded-md pr-10 text-[#fff] border-[1px] border-[#198754] bg-[#132826]"
+                  />
+                </div>
+              </div>
+              <p
+                class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
+              >
+                Primary Email
+              </p>
+            </div>
+
             <div v-if="storeCommon.user.google_id == null">
               <div class="flex justify-start items-center sm:text-base text-xs">
                 <div class="flex flex-col sm:w-[360px] w-[200px]">
