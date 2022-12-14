@@ -12,5 +12,10 @@
     "director":"რეჟისორი",
     "budget":"ბიუჯეტი",
     "add_quote" : "ციტატის დამატება",
-    "quote" : "ციტატა"
+    "quote" : "ციტატა",
+    "view_quote" : "ციტატის ნახვა",
+    "edit_quote" : "ციტატის რედაქტირება",
+    "write_new_quote" : "დაწერეთ ახალი ციტატა",
+    "no_quotes_have_been_added_yet" : "ციტატები ჯერ არ დამატებულა",
+    "my_profile":"ჩემი პროფილი"
 }

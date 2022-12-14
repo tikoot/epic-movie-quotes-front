@@ -1,7 +1,9 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center">
-      <h1 class="text-white text-[32px]">{{ $t("auth.create_an_account") }}</h1>
+      <h1 class="text-white text-[16px] sm:text-[32px]">
+        {{ $t("auth.create_an_account") }}
+      </h1>
       <p class="text-[#6C757D]">{{ $t("auth.start_your_journey") }}</p>
       <VueForm class="pt-[24px]" @submit="store.handleRegister">
         <div v-if="store.errors !== ''">

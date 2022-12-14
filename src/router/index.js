@@ -1,13 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import LandingPage from "@/views/LandingPage.vue";
-import NewsFeed from "@/views/newsFeedPages/NewsFeed.vue";
-import MovieList from "@/views/newsFeedPages/MovieList.vue";
-import AddMovie from "@/views/newsFeedPages/AddMovie.vue";
-import AddQuote from "@/views/newsFeedPages/AddQuote.vue";
-import MovieDescription from "@/views/newsFeedPages/MovieDescription.vue";
-import UpdateMovie from "@/views/newsFeedPages/UpdateMovie.vue";
-import EditProfile from "@/views/newsFeedPages/EditProfile.vue";
+import NewsFeed from "@/views/NewsFeed.vue";
+import MovieList from "@/views/MovieList.vue";
+import EditProfile from "@/views/EditProfile.vue";
+import AddMovie from "@/views/crudOperations/AddMovie.vue";
+import AddQuote from "@/views/crudOperations/AddQuote.vue";
+import MovieDescription from "@/views/crudOperations/MovieDescription.vue";
+import QuoteFromNews from "@/views/crudOperations/QuoteFromNews.vue";
+import ViewQuote from "@/views/crudOperations/ViewQuote.vue";
+import EditQuote from "@/views/crudOperations/EditQuote.vue";
+import UpdateMovie from "@/views/crudOperations/UpdateMovie.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
 import GoogleCallback from "@/views/auth/GoogleCallback.vue";
@@ -20,6 +23,8 @@ import SuccessMessage from "@/views/auth/passwordReset/SuccessMessage.vue";
 import isAuthenticated from "./guards";
 import { useAuthStore } from "@/stores/auth";
 import axios from "axios";
+import ForbiddenPage from "../views/ForbiddenPage.vue";
+import NotFound from "../views/NotFound.vue";
 
 axios.defaults.withCredentials = true;
 
@@ -83,6 +88,13 @@ const router = createRouter({
       name: "newsFeed",
       component: NewsFeed,
       beforeEnter: isAuthenticated,
+      children: [
+        {
+          path: "/add-quote",
+          name: "QuoteFromNews",
+          component: QuoteFromNews,
+        },
+      ],
     },
 
     {
@@ -116,6 +128,18 @@ const router = createRouter({
           name: "addQuote",
           component: AddQuote,
         },
+        {
+          path: "/view-quote/:id",
+          name: "viewQuote",
+          component: ViewQuote,
+          params: true,
+        },
+        {
+          path: "/edit-quote/:id",
+          name: "editQuote",
+          component: EditQuote,
+          params: true,
+        },
       ],
     },
 
@@ -125,6 +149,12 @@ const router = createRouter({
       component: EditProfile,
       beforeEnter: isAuthenticated,
     },
+    {
+      path: "/forbidden",
+      name: "forbidden",
+      component: ForbiddenPage,
+    },
+    { path: "/:notFound(.*)", name: "notFound", component: NotFound },
   ],
 });
 

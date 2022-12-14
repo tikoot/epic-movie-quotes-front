@@ -14,9 +14,12 @@
     "@vee-validate/i18n": "^4.7.2",
     "@vee-validate/rules": "^4.7.2",
     "axios": "^1.1.3",
+    "laravel-echo": "^1.14.2",
     "pinia": "^2.0.23",
+    "pusher-js": "^7.5.0",
     "vee-validate": "^4.7.2",
     "vue": "^3.2.41",
+    "vue-echo-laravel": "^1.0.0",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.5"
   },

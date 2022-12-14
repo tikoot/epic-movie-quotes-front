@@ -1,13 +1,13 @@
 <template>
-  <nav class="flex justify-between pt-[31px] px-[70px]">
+  <nav class="flex justify-between px-[35px] pt-[31px] sm:px-[70px]">
     <h1 class="text-[#DDCCAA]">MOVIE QUOTES</h1>
 
-    <ul class="flex">
+    <ul class="flex items-center">
       <LanguageSelect />
       <li>
         <router-link
           to="/register"
-          class="px-[25px] py-[8px] mr-[16px] text-[#fff] bg-[#E31221] border-[1px] border-[#E31221] rounded"
+          class="hidden md:block px-[25px] py-[8px] mr-[16px] text-[#fff] bg-[#E31221] border-[1px] border-[#E31221] rounded"
           >{{ $t("auth.sign_up") }}
         </router-link>
       </li>

@@ -19,10 +19,10 @@
 <script setup>
 import axiosInstance from "@/config/axios/axios";
 import { useRouter } from "vue-router";
-import { useMovieStore } from "../../stores/addMovie";
+import { useCrudStore } from "../../stores/crudOperations";
 
 const router = useRouter();
-const store = useMovieStore();
+const store = useCrudStore();
 
 const movieId = store.movie_description[0].id;
 const deleteMovie = async () => {

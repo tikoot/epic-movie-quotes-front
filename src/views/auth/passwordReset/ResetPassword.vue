@@ -106,10 +106,7 @@
         </button>
       </VueForm>
       <div class="flex justify-center items-center mt-6">
-        <router-link
-          :to="{ name: 'SendPasswordEmail' }"
-          class="text-[#0D6EFD] underline"
-        >
+        <router-link :to="{ name: 'login' }" class="text-[#0D6EFD] underline">
           <img src="@/assets/images/arrowBack.png" alt="arrow" />
         </router-link>
         <div class="text-[#6C757D] text-center mr-[4px] pl-[12px]">

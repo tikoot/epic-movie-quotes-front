@@ -1,5 +1,5 @@
 <template>
   <page-base-component activeUser>
-    <p>user profiles</p>
+    <div class="h-[100vh]"></div>
   </page-base-component>
 </template>

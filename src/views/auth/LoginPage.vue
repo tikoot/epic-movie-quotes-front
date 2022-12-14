@@ -1,20 +1,28 @@
 <template>
   <base-dialog>
     <div class="flex flex-col items-center">
-      <h1 class="text-white text-[32px]">
+      <h1 class="text-white text-[16px] sm:text-[32px]">
         {{ $t("auth.log_in_to_your_account") }}
       </h1>
       <p class="text-[#6C757D] pt-[8px]">
         {{ $t("auth.welcome_back_please_enter_your_details") }}
       </p>
+
       <VueForm class="pt-[24px]" @submit="onSumbit">
+        <div v-if="store.errors_login !== ''">
+          <div v-for="(value, key) in store.errors_login" :key="key">
+            <p class="text-[#E31221] text-base pt-[5px]">
+              {{ value }}
+            </p>
+          </div>
+        </div>
         <div class="flex flex-col pb-[16px]">
           <label for="email" class="pb-2 mb-[1px] text-white">{{
             $t("auth.email")
           }}</label>
           <Field
             name="email"
-            type="email"
+            type="text"
             rules="required|min:3"
             placeholder="Enter your email"
             v-model.trim="store.email"
@@ -140,7 +148,8 @@ const onSumbit = async () => {
     router.push({ name: "newsFeed" });
     console.log(response);
   } catch (err) {
-    console.log(err);
+    console.log(err.response.data.error);
+    store.errors_login = err.response.data;
   }
 };
 </script>

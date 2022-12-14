@@ -12,6 +12,11 @@
     "director":"Director",
     "budget":"Budget",
     "add_quote" : "Add quote",
-    "quote" : "Quote"
+    "quote" : "Quote",
+    "view_quote" : "View Quote",
+    "edit_quote" : "Edit Quote",
+    "write_new_quote" : "Write new quote",
+    "no_quotes_have_been_added_yet" : "No quotes have been added yet",
+    "my_profile":"My profile"
 
 }

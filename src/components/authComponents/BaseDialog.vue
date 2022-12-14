@@ -5,7 +5,7 @@
   ></div>
   <dialog
     open
-    class="fixed top-36 max-w-[600px] z-[100] bg-[#222030] border-[1px] border-[#222030] rounded-[10px] py-[37px] px-[104px]"
+    class="w-screen h-screen top-0 fixed sm:top-36 sm:max-w-[600px] sm:h-fit z-[100] bg-[#222030] border-[1px] border-[#222030] rounded-[10px] sm:py-[37px] px-[34px] sm:px-[104px]"
   >
     <slot></slot>
   </dialog>

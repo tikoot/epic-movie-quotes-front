@@ -73,6 +73,17 @@
           </div>
         </div>
         <VueForm @submit="storeQuote" class="flex flex-col w-full">
+          <div v-if="store.errors !== ''">
+            <div v-for="(value, key) in store.errors" :key="key">
+              <p
+                v-for="error in value"
+                :key="error"
+                class="text-[#E31221] text-base py-[5px]"
+              >
+                {{ error }}
+              </p>
+            </div>
+          </div>
           <div class="relative w-full mb-[20px]">
             <Field
               as="textarea"
@@ -107,25 +118,35 @@
               class="text-[#E31221] text-base pb-[5px] pl-5"
             />
           </div>
-
-          <input
-            type="file"
-            class="w-[895px] mb-[28px]"
-            v-on:change="onFileChange"
-          />
-          <select
-            disabled
-            class="bg-[#000] text-[#fff] mb-[48px] py-[15px] px-[32px]"
+          <div
+            class="w-full h-[84px] flex items-center border-[#6C757D] border-[1px] rounded-[4px] mb-[40px]"
           >
-            <option
-              v-for="movie in store.movie_description"
-              :key="movie.id"
-              :value="movie.id"
-              class="bg-[#000] text-[#fff]"
+            <DragAndDrop
+              @drop.prevent="drop"
+              @change="selectedFile"
+              :thumbnail="store.quote_thumbnail.name"
+            ></DragAndDrop>
+          </div>
+          <div class="relative w-full">
+            <img
+              src="@/assets/images/VectorCamera.png"
+              alt=""
+              class="absolute left-[24px] top-[18px]"
+            />
+            <select
+              disabled
+              class="bg-[#000] w-full text-[#fff] text-[24px] mb-[48px] pb-[15px] pt-[25px] pl-[68px] pr-[32px] rounded-[4px]"
             >
-              {{ movie.movie_name.en }}
-            </option>
-          </select>
+              <option
+                v-for="movie in store.movie_description"
+                :key="movie.id"
+                :value="movie.id"
+                class="bg-[#000] text-[#fff]"
+              >
+                {{ movie.movie_name.en }}
+              </option>
+            </select>
+          </div>
           <button
             class="w-full rounded-[4px] py-[7px] px-[13px] text-center text-white bg-[#E31221] mt-[8px] mb-[44px]"
             type="submit"
@@ -139,18 +160,22 @@
 </template>
 
 <script setup>
+import DragAndDrop from "@/components/newsFeedComponents/DragAndDrop.vue";
 import axiosInstance from "@/config/axios/axios";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
-import { useMovieStore } from "../../stores/addMovie";
+import { useCrudStore } from "../../stores/crudOperations";
 import { useCommonStore } from "../../stores/common";
 import { useRouter } from "vue-router";
 
 const storeCommon = useCommonStore();
-const store = useMovieStore();
+const store = useCrudStore();
 const router = useRouter();
 
-const onFileChange = (e) => {
-  store.quote_thumbnail = e.target.files[0];
+const drop = (e) => {
+  store.quote_thumbnail = e.dataTransfer.files[0];
+};
+const selectedFile = () => {
+  store.quote_thumbnail = document.querySelector(".dropzoneFile").files[0];
 };
 
 const storeQuote = async () => {
@@ -159,6 +184,7 @@ const storeQuote = async () => {
       "quotes/store",
       {
         movie_id: store.movie_description[0].id,
+        user_id: store.movie_description[0].user_id,
         quote_en: store.quote_en,
         quote_ka: store.quote_ka,
         thumbnail: store.quote_thumbnail,
@@ -169,6 +195,9 @@ const storeQuote = async () => {
     )
     .then((response) => {
       console.log(response);
+      store.quote_en = "";
+      store.quote_ka = "";
+      store.showQuotes(store.movie_description[0].id);
       router.back();
     })
     .catch((error) => {

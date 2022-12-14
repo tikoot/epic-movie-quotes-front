@@ -1,6 +1,8 @@
 <template>
   <page-base-component activeList>
-    <section class="pl-[127px] w-full box-border">
+    <section
+      class="pl-[127px] w-full box-border overflow-auto min-h-[100vh] bg-[#151320]"
+    >
       <div class="flex justify-between items-center">
         <h1 class="text-2xl text-[#fff]">
           {{ $t("userPage.my_list_of_movies") }} ( {{ $t("userPage.total") }}
@@ -50,7 +52,7 @@
           </div>
         </div>
       </div>
-      <div v-else>
+      <div v-else class="h-[100vh]">
         <h1 class="pt-[50px] text-[#fff] text-lg">
           {{ $t("userPage.you_have_not_added_any_movies_yet") }}
         </h1>
@@ -60,20 +62,11 @@
 </template>
 
 <script setup>
-import axios from "@/config/axios/axios.js";
 import { onMounted } from "vue";
-import { useCommonStore } from "../../stores/common";
+import { useCommonStore } from "../stores/common";
 const storeCommon = useCommonStore();
 
 onMounted(() => {
-  axios
-    .get("movies/show/" + localStorage.user_id)
-    .then((response) => {
-      console.log(response);
-      storeCommon.movies = response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  storeCommon.showMovies();
 });
 </script>
