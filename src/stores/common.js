@@ -108,5 +108,16 @@ export const useCommonStore = defineStore("common", {
           console.log(error);
         });
     },
+    deleteEmail(email) {
+      axios
+        .delete("delete-email/" + email)
+        .then((response) => {
+          console.log(response);
+          this.getUserEmails();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 });
