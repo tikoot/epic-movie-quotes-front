@@ -17,6 +17,7 @@ export const useCommonStore = defineStore("common", {
       readonlyPass: true,
       update_user_avatar: null,
       change_email: "",
+      userEmails: {},
     };
   },
   actions: {
@@ -95,6 +96,17 @@ export const useCommonStore = defineStore("common", {
     },
     editPassword() {
       this.readonlyPass = false;
+    },
+    getUserEmails() {
+      axios
+        .get("/user-email/" + this.user.id)
+        .then((response) => {
+          this.userEmails = response.data;
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 });
