@@ -52,8 +52,10 @@
 import axiosInstance from "@/config/axios/axios.js";
 import { useCommonStore } from "../../../stores/common";
 import { Form as VueForm, Field, ErrorMessage } from "vee-validate";
+import { useRouter } from "vue-router";
 
 const storeCommon = useCommonStore();
+const router = useRouter();
 
 const addEmail = async () => {
   axiosInstance
@@ -64,6 +66,8 @@ const addEmail = async () => {
     })
     .then((response) => {
       console.log(response);
+      storeCommon.getUserEmails();
+      router.push({ name: "editProfile" });
     })
     .catch((error) => {
       console.log(error);
