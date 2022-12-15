@@ -70,10 +70,14 @@
                   class="block text-sm font-medium text-white mb-2"
                   >{{ $t("auth.email") }}</label
                 >
-                <div class="relative mt-1 rounded-md shadow-sm">
+                <div
+                  class="relative mt-1 rounded-md shadow-sm"
+                  v-for="emails in storeCommon.userEmails"
+                  :key="emails.id"
+                >
                   <input
                     readonly
-                    v-model="storeCommon.user.email"
+                    v-model="emails.email"
                     class="py-2 px-5 block w-full rounded-md pr-10 text-[#fff] border-[1px] border-[#198754] bg-[#132826]"
                   />
                 </div>
@@ -108,16 +112,19 @@
 
                     <button
                       v-if="email.email_verified_at !== null"
+                      @click.prevent="
+                        storeCommon.makePrimary(storeCommon.user.id, email.id)
+                      "
                       class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
                     >
                       Make this primary
                     </button>
-                    <button
+                    <p
                       v-else
                       class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
                     >
                       Not verified
-                    </button>
+                    </p>
                     <button
                       @click.prevent="storeCommon.deleteEmail(email.id)"
                       class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
@@ -241,6 +248,7 @@ onMounted(() => {
     return axios
       .get("/secondary-email/" + route.query.token)
       .then((response) => {
+        storeCommon.getUserEmails();
         console.log(response);
       })
       .catch((error) => {

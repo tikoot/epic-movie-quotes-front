@@ -119,5 +119,19 @@ export const useCommonStore = defineStore("common", {
           console.log(error);
         });
     },
+    makePrimary(id, email) {
+      axios
+        .post("make-primary", {
+          email: email,
+          user_id: id,
+        })
+        .then((response) => {
+          console.log(response);
+          this.getUserEmails();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 });
