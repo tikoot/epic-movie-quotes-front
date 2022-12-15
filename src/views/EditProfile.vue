@@ -105,9 +105,24 @@
                         />
                       </div>
                     </div>
-                    <p
+
+                    <button
+                      v-if="email.email_verified_at !== null"
                       class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
-                    ></p>
+                    >
+                      Make this primary
+                    </button>
+                    <button
+                      v-else
+                      class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
+                    >
+                      Not verified
+                    </button>
+                    <button
+                      class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
               </div>
