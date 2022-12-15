@@ -16,7 +16,7 @@
       <div class="px-[32px]">
         <div class="flex items-center justify-start pb-[28px] pt-[30px]">
           <img
-            :src="storeCommon.backUrl + storeCommon.user.avatar"
+            :src="storeCommon.backUrl + 'storage/' + storeCommon.user.avatar"
             alt="user avatar"
             class="object-contain h-[60px] w-[60px] rounded-full bg-[#D9D9D9]"
           />
@@ -32,7 +32,7 @@
           <div>
             <img
               class="rounded-[12px] w-[280px] h-[158px] pr-[27px]"
-              :src="storeCommon.backUrl + '/storage/' + movie.thumbnail"
+              :src="storeCommon.backUrl + 'storage/' + movie.thumbnail"
             />
           </div>
           <div>

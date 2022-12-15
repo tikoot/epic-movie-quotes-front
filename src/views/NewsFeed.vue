@@ -37,7 +37,7 @@
       >
         <div class="flex items-center justify-start pb-[16px]">
           <img
-            :src="storeCommon.backUrl + quote.user.avatar"
+            :src="storeCommon.backUrl + 'storage/' + quote.user.avatar"
             alt="user avatar"
             class="object-contain h-[60px] w-[60px] rounded-full bg-[#D9D9D9]"
           />
@@ -67,7 +67,7 @@
         <div>
           <img
             class="w-[890px] h-[501px] rounded-[10px]"
-            :src="storeCommon.backUrl + '/storage/' + quote.thumbnail"
+            :src="storeCommon.backUrl + 'storage/' + quote.thumbnail"
           />
         </div>
         <div class="flex pb-[43px] pt-[25px]">
@@ -99,7 +99,7 @@
             :key="comments.id"
           >
             <img
-              :src="storeCommon.backUrl + comments.user.avatar"
+              :src="storeCommon.backUrl + 'storage/' + comments.user.avatar"
               alt=""
               class="w-[52px] h-[52px] rounded-[50%]"
             />
@@ -117,7 +117,7 @@
           class="pb-[33px] flex"
         >
           <img
-            :src="storeCommon.backUrl + storeCommon.user.avatar"
+            :src="storeCommon.backUrl + 'storage/' + storeCommon.user.avatar"
             alt="user avatar"
             class="w-[52px] h-[52px] rounded-[50%]"
           />

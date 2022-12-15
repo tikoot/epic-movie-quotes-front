@@ -17,5 +17,6 @@
     "edit_quote" : "ციტატის რედაქტირება",
     "write_new_quote" : "დაწერეთ ახალი ციტატა",
     "no_quotes_have_been_added_yet" : "ციტატები ჯერ არ დამატებულა",
-    "my_profile":"ჩემი პროფილი"
+    "my_profile":"ჩემი პროფილი",
+    "add_new_email": "დაამატეთ ახალი ელფოსტა"
 }

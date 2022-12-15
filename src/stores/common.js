@@ -11,6 +11,13 @@ export const useCommonStore = defineStore("common", {
       quotes_all: [],
       params: {},
       searchString: null,
+      username: "",
+      avatar: "",
+      readonly: true,
+      readonlyPass: true,
+      update_user_avatar: null,
+      change_email: "",
+      userEmails: {},
     };
   },
   actions: {
@@ -83,6 +90,48 @@ export const useCommonStore = defineStore("common", {
             console.log(error);
           });
       }, 500);
+    },
+    editProfile() {
+      this.readonly = false;
+    },
+    editPassword() {
+      this.readonlyPass = false;
+    },
+    getUserEmails() {
+      axios
+        .get("/user-email/" + this.user.id)
+        .then((response) => {
+          this.userEmails = response.data;
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    deleteEmail(email) {
+      axios
+        .delete("delete-email/" + email)
+        .then((response) => {
+          console.log(response);
+          this.getUserEmails();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    makePrimary(id, email) {
+      axios
+        .post("make-primary", {
+          email: email,
+          user_id: id,
+        })
+        .then((response) => {
+          console.log(response);
+          this.getUserEmails();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 });
