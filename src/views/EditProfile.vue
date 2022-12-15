@@ -13,7 +13,7 @@
           alt=""
         />
         <div
-          class="flex flex-col gap-6 mt-14 sm:w-[780px] w-[428px] rounded-[12px] h-full sm:px-20 px-5 bg-[#11101a] pt-[124px]"
+          class="flex flex-col box-border gap-6 mt-14 sm:w-[780px] w-[428px] rounded-[12px] h-full sm:px-20 px-5 bg-[#11101a] pt-[124px]"
         >
           <VueForm @submit="updateUser" class="">
             <div class="flex items-center justify-center">
@@ -86,6 +86,31 @@
             </div>
 
             <div v-if="storeCommon.user.google_id == null">
+              <div v-for="emails in storeCommon.userEmails" :key="emails.id">
+                <div v-for="email in emails.emails" :key="email.id">
+                  <div
+                    class="flex justify-start items-center sm:text-base text-xs mb-[32px] mt-[41px]"
+                  >
+                    <div class="flex flex-col sm:w-[360px] w-[200px]">
+                      <label
+                        for="email"
+                        class="block text-sm font-medium text-white mb-2"
+                        >{{ $t("auth.email") }}</label
+                      >
+                      <div class="relative mt-1 rounded-md shadow-sm">
+                        <input
+                          readonly
+                          v-model="email.email"
+                          class="py-2 px-5 block w-full rounded-md pr-10 text-[black]"
+                        />
+                      </div>
+                    </div>
+                    <p
+                      class="sm:py-2 py-1 sm:px-4 px-2 text-white rounded flex items-center flex-row-reverse justify-center gap-2 mt-7"
+                    ></p>
+                  </div>
+                </div>
+              </div>
               <div>
                 <router-link
                   :to="{ name: 'addEmail' }"
@@ -195,6 +220,7 @@ const updateUser = async () => {
 };
 
 onMounted(() => {
+  storeCommon.getUserEmails();
   if (route.query) {
     return axios
       .get("/secondary-email/" + route.query.token)
